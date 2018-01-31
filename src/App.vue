@@ -7,13 +7,13 @@
 
 <script>
 import Specs from './components/Specs'
-import sidebar from './components/Sidebar'
+import Sidebar from './components/Sidebar'
 
 export default {
-    components: {
-        Specs,
-        sidebar
-    }
+  components: {
+    Specs,
+    Sidebar
+  }
 }
 </script>
 
@@ -32,20 +32,20 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 
 }
 
 .specs-wrapper {
-    position: fixed;
-    display: flex;
-    width: 100%;
-    height: 100vh;
+position: fixed;
+display: flex;
+width: 100%;
+height: 100vh;
 
 }
 </style>

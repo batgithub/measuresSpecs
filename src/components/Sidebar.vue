@@ -1,11 +1,16 @@
 <template lang="html">
     <aside class="sidebar">
-        <h1>Checkout</h1>
+        <sidebar-header href="link transmit to child components"></sidebar-header>
     </aside>
 </template>
 
 <script>
+import SidebarHeader from './Sidebar/SidebarHeader'
+
 export default {
+  components: {
+    SidebarHeader
+  }
 }
 </script>
 
