@@ -2,17 +2,24 @@
     <div class="specs-wrapper">
         <sidebar></sidebar>
         <specs></specs>
+        {{ md }}
     </div>
 </template>
 
 <script>
 import Specs from './components/Specs'
 import Sidebar from './components/Sidebar'
+import Test from '../static/Test.json'
 
 export default {
   components: {
     Specs,
     Sidebar
+  },
+  data(){
+    return{
+      md: Test
+    }
   }
 }
 </script>
