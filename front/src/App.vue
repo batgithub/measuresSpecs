@@ -1,20 +1,12 @@
 <template>
-    <div class="specs-wrapper">
-        <sidebar></sidebar>
-        <specs></specs>
+    <div class="app">
+      <router-view/>
     </div>
 </template>
 
 <script>
-import Specs from './components/Specs'
-import Sidebar from './components/Sidebar'
-
-
 export default {
-  components: {
-    Specs,
-    Sidebar
-  }
+  name: 'App'
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template lang="html">
     <aside class="sidebar">
         <sidebar-header href="link transmit to child components"></sidebar-header>
+        
     </aside>
 </template>
 
@@ -10,10 +11,6 @@ import SidebarHeader from './Sidebar/SidebarHeader'
 export default {
   components: {
     SidebarHeader
-  },
-  data () {
-    return {
-    }
   }
 }
 
