@@ -6,6 +6,24 @@ const morgan = require('morgan')
 var mds = require('markdown-serve'),
     path = require('path');
 
+// folder parser
+var router  = express.Router()
+var fs = require('fs')
+router.get('/', function(req, res, next) {
+    var folders = fs.readdirSync('../../front/static/')
+    var objArray = [];
+    folders.forEach((folder) => {
+        var obj    = {};
+        var files  = fs.readdirSync('/path/to/folders/' + folder)
+
+        obj.folder = folder;
+        obj.files  = files;
+        objArray.push(obj);
+    })
+})
+
+
+
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())

@@ -3,6 +3,9 @@
         <sidebar-header href="link transmit to child components"></sidebar-header>
         <div v-html="md.parsedContent">
         </div>
+        <div v-html="md.modified">
+        </div>
+
 
     </aside>
 </template>
