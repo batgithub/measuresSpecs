@@ -22,11 +22,11 @@ export default {
     }
   },
   mounted () {
-    this.getMd()
+    this.getMd('test2/test2')
   },
   methods: {
-    async getMd () {
-      const response = await MdService.fetchMd()
+    async getMd (path) {
+      const response = await MdService.fetchMd(path)
       this.md = response.data
     }
   }

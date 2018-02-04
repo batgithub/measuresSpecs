@@ -1,7 +1,7 @@
 import Api from '@/services/Api'
 
 export default {
-  fetchMd () {
-    return Api().get('markdown/test')
+  fetchMd (path) {
+    return Api().get('markdown/'+path)
   }
 }
