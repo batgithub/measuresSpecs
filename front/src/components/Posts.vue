@@ -1,28 +1,26 @@
 <template>
   <div class="posts">
-    <h1>Posts</h1>
-    This file will list all the posts.
-
-    <div v-for="post in posts">
-      <p>
-        <span><b>{{ post.title }}</b></span><br />
-        <span>{{ post.description }}</span>
-      </p>
-    </div>
+    <span><b>{{ post.title }}</b></span><br />
+    <span>{{ post.description }}</span>
   </div>
 </template>
 
 <script>
-import PostsService from '@/services/PostsService'
+
+import PostsService from '../services/PostsService'
 export default {
+
   name: 'posts',
   data () {
+    return {}
+  },
+  data () {
     return {
-      posts: []
+        posts: []
     }
   },
   mounted () {
-    this.getPosts()
+      this.getPosts()
   },
   methods: {
     async getPosts () {
