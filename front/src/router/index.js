@@ -1,21 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Measures from '@/components/Measures'
-import Posts from '@/components/Posts'
+import Explorer from '@/components/Explorer'
+var pathToRegexp = require('path-to-regexp')
 
 Vue.use(Router)
 
+
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '*/?specs',
       name: 'Measures',
       component: Measures
     },
     {
-     path: '/posts',
-     name: 'Posts',
-     component: Posts
+      path: '/*',
+      name: 'Explorer',
+      component: Explorer
     }
   ]
 })

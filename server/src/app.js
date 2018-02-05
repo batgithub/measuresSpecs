@@ -22,19 +22,12 @@ const filteredTree = dirTree('../front/static/', {exclude:/.DS_Store/})
 
 app.get('/',(req, res) => {
     res.send(
-      filteredTree
+      [{
+        tree: filteredTree
+      }]
     )
 })
 
-// Test
-app.get('/posts',(req, res) => {
-    res.send(
-        [{
-            title: "hello World!",
-            description: "yo yo yo"
-        }]
-    )
-})
 
 // Parser MD
 app.use('/markdown', mds.middleware({
