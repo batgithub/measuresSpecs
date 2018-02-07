@@ -22,9 +22,7 @@ const filteredTree = dirTree('../front/static/', {exclude:/.DS_Store/})
 
 app.get('/',(req, res) => {
     res.send(
-      [{
-        tree: filteredTree
-      }]
+      filteredTree
     )
 })
 
