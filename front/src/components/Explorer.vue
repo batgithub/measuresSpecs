@@ -1,29 +1,42 @@
 <template>
-  <div>
-    <h1>Les features</h1>
-    <li v-for="folder in tree ">{{ folder.path}}</li>
-    <li>{{ folders.length  }}</li>
+  <div class="tree">
+    <!-- <Folderlist v-for="folder in tree" :path="folder.path" :children="folder.children"></Folderlist> -->
+    <li>{{ tree }}</li>
   </div>
 </template>
 
 <script>
 import FoldersTree from '../services/FoldersTree'
+import Folderlist from './Folderlist'
+
 export default {
+
+  components: {
+    Folderlist
+  },
+
   data () {
     return {
       tree: [],
-      folders: []
+      test: []
     }
   },
+
   mounted () {
     this.getTree()
 
   },
+
   methods: {
     async getTree () {
       const response = await FoldersTree.fetchFolders()
-      this.folders = response.data.children
-      this.tree = response.data.children
+      this.tree = response.data
+      console.log(this.tree);
+
+      for (var i=0; i < this.tree.length; i++){
+        return data.path;
+      }
+
     }
   }
 }

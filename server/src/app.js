@@ -3,8 +3,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 
-
-
 //markdown parser
 var mds = require('markdown-serve'),
     path = require('path');
