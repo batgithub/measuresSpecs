@@ -25,6 +25,21 @@ app.get('/',(req, res) => {
 })
 
 
+const fs = require('fs');
+
+//return children folder
+
+app.get('/p/:tagId', function(req, res) {
+  const Folder = '../front/static/' + req.params.tagId;
+  fs.readdir(Folder, (err, files) => {
+    files.forEach(file => {
+      res.send(file);
+      console.log(file);
+    });
+  })
+
+});
+
 // Parser MD
 app.use('/markdown', mds.middleware({
     rootDirectory: path.resolve(__dirname, '../../front/static/'),
