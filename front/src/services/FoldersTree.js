@@ -1,7 +1,7 @@
 import Api from '@/services/Api'
 
 export default {
-  fetchFolders () {
-    return Api().get('/')
+  fetchFolders (path) {
+    return Api().get('/folders/'+path)
   }
 }

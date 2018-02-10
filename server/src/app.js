@@ -10,71 +10,55 @@ var mds = require('markdown-serve'),
 
 
 const app = express()
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
 
 
 
+//return child folders and if they are specs folders
+var getChildFolders = function(folderPathRoot) {
+  var childFolders = fs.readdirSync(folderPathRoot)
+  var childFoldersArray = [];
 
-
-
-
-//return children folder
-var dir = require('node-dir')
-
-
-
-var root = "../front/static/"
-var folders = fs.readdirSync(root)
-var objArray = [];
-folders.forEach((folder) => {
+  childFolders.forEach((folder) => {
     var obj    = {};
-    var files  = fs.readdirSync(root + folder);
-    var objArray2 = [];
+    var subFolders  = fs.readdirSync(folderPathRoot + folder);
     var isSpec = function(){
-      var response = true
-      files.forEach((file) => {
-        var subfile = root + folder +'/' +file
-        if(fs.lstatSync(subfile).isDirectory()){}
-        else {
-          response = false
+      var response = false
+      subFolders.forEach((file) => {
+        var filePath = folderPathRoot + folder +'/' +file
+        if(!fs.lstatSync(filePath).isDirectory()){
+          response = true
         }
       })
       return response
     }
 
     obj.folderName = folder
-    obj.folderPath  = files
+    obj.folderPath  = folderPathRoot + folder
     obj.isSpec = isSpec()
 
-    objArray.push(obj)
+    childFoldersArray.push(obj)
+  })
+
+  return childFoldersArray
+}
+
+// console.log(getChildFolders("../front/static/"))
+
+app.get('/folders/*', function(req, res) {
+  var checkIfParam = function(){
+    if (req.params[0]){
+      return req.params[0]+'/'
+    }
+  }
+  checkIfParam()
+  const pathFolder = '../front/static/' + req.params[0]
+  res.send(getChildFolders(pathFolder))
 })
-console.log(objArray)
-
-
-
-app.get('/p/:tagId', function(req, res) {
-  const Folder = '../front/static/' + req.params.tagId
-  console.log(Folder)
-  res.send(Folder)
-  // fs.readdir(Folder, (err, files) => {
-  //   files.forEach(file => {
-  //     res.send(file)
-  //     console.log(file)
-  //   })
-  // })
-
-})
-
-
-
-
-
-
-
 
 // Parser MD
+app.use(morgan('combined'))
+app.use(bodyParser.json())
+app.use(cors())
 app.use('/markdown', mds.middleware({
     rootDirectory: path.resolve(__dirname, '../../front/static/'),
 }))

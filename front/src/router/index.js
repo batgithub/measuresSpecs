@@ -11,12 +11,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '*/?specs',
-      name: 'Measures',
-      component: Measures
-    },
-    {
-      path: '/*',
+      path: '*',
       name: 'Explorer',
       component: Explorer
     }

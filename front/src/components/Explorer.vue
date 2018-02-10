@@ -7,36 +7,29 @@
 
 <script>
 import FoldersTree from '../services/FoldersTree'
-import Folderlist from './Folderlist'
+
 
 export default {
 
   components: {
-    Folderlist
+
   },
 
   data () {
     return {
-      tree: [],
-      test: []
+      tree: []
     }
   },
 
   mounted () {
-    this.getTree()
+    this.getTree('test2/')
 
   },
 
   methods: {
-    async getTree () {
-      const response = await FoldersTree.fetchFolders()
+    async getTree (path) {
+      const response = await FoldersTree.fetchFolders(path)
       this.tree = response.data
-      console.log(this.tree);
-
-      for (var i=0; i < this.tree.length; i++){
-        return data.path;
-      }
-
     }
   }
 }
