@@ -1,36 +1,34 @@
 <template>
   <div class="tree">
-    <!-- <Folderlist v-for="folder in tree" :path="folder.path" :children="folder.children"></Folderlist> -->
-    <li>{{ tree }}</li>
+    <div class="" v-for="folder in tree.childFoldersArray">
+      {{ folder.folderName }}
+      {{error.message}}
+    </div>
   </div>
 </template>
 
 <script>
-import FoldersTree from '../services/FoldersTree'
-
+// import FoldersService from '@/services/FoldersService'
+import axios from 'axios';
 
 export default {
-
-  components: {
-
-  },
-
   data () {
     return {
-      tree: []
+      tree: [],
+      error: []
     }
   },
-
-  mounted () {
-    this.getTree('test2/')
-
-  },
-
-  methods: {
-    async getTree (path) {
-      const response = await FoldersTree.fetchFolders(path)
+  // Fetches posts when the component is created.
+  created() {
+    axios.get(`http://localhost:8081/folders/`)
+    .then(response => {
+      // JSON responses are automatically parsed.
       this.tree = response.data
-    }
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+
   }
 }
 </script>

@@ -1,64 +1,68 @@
 const express = require('express')
+// utils for transfert data through http request
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const fs = require('fs')
 
 //markdown parser
-var mds = require('markdown-serve'),
-    path = require('path')
+var mds = require('markdown-serve')
+var path = require('path')
 
-
+// start
 const app = express()
+app.use(morgan('combined'))
+app.use(bodyParser.json())
+app.use(cors())
 
-
-
-//return child folders and if they are specs folders
+//return if we are in specs folder, his child folders and if they are specs folders
 var getChildFolders = function(folderPathRoot) {
   var childFolders = fs.readdirSync(folderPathRoot)
-  var childFoldersArray = [];
-
+  var childFoldersArray = []
+  var iAmASpec = false
   childFolders.forEach((folder) => {
     var obj    = {};
-    var subFolders  = fs.readdirSync(folderPathRoot + folder);
-    var isSpec = function(){
-      var response = false
-      subFolders.forEach((file) => {
-        var filePath = folderPathRoot + folder +'/' +file
-        if(!fs.lstatSync(filePath).isDirectory()){
-          response = true
-        }
-      })
-      return response
+    var childFolderPath = folderPathRoot + folder
+    if(!fs.lstatSync(childFolderPath).isDirectory()){
+      iAmASpec = true
+    }else{
+      var subFolders  = fs.readdirSync(folderPathRoot + folder);
+      var isSpec = function(){
+        var response = false
+        subFolders.forEach((file) => {
+          var filePath = folderPathRoot + folder +'/' +file
+          if(!fs.lstatSync(filePath).isDirectory()){
+            response = true
+          }
+        })
+        return response
+      }
+
+      obj.folderName = folder
+      obj.folderPath  = folderPathRoot + folder
+      obj.isSpec = isSpec()
+
+      childFoldersArray.push(obj)
     }
-
-    obj.folderName = folder
-    obj.folderPath  = folderPathRoot + folder
-    obj.isSpec = isSpec()
-
-    childFoldersArray.push(obj)
   })
-
-  return childFoldersArray
+  return {iAmASpec:iAmASpec, childFoldersArray,}
 }
 
-// console.log(getChildFolders("../front/static/"))
 
 app.get('/folders/*', function(req, res) {
   var checkIfParam = function(){
     if (req.params[0]){
       return req.params[0]+'/'
     }
-  }
-  checkIfParam()
+  }()
+
   const pathFolder = '../front/static/' + req.params[0]
-  res.send(getChildFolders(pathFolder))
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(getChildFolders(pathFolder)))
 })
 
+
 // Parser MD
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
 app.use('/markdown', mds.middleware({
     rootDirectory: path.resolve(__dirname, '../../front/static/'),
 }))
