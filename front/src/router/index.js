@@ -10,7 +10,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/e',
+      path: '/e/*',
       name: 'Explorer',
       component: Explorer
     },

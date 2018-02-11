@@ -49,7 +49,7 @@ var getChildFolders = function(folderPathRoot) {
 }
 
 
-app.get('/folders/*', function(req, res) {
+app.get('/folders/e/*', function(req, res) {
   var checkIfParam = function(){
     if (req.params[0]){
       return req.params[0]+'/'

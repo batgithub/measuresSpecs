@@ -1,8 +1,9 @@
 <template>
   <div class="tree">
     <div class="" v-for="folder in tree.childFoldersArray">
-      {{ folder.folderName }}
+      <a :href=urlPath+folder.folderName>{{ folder.folderName }}</a>
       {{error.message}}
+
     </div>
   </div>
 </template>
@@ -15,12 +16,16 @@ export default {
   data () {
     return {
       tree: [],
-      error: []
+      error: [],
+      urlPath:''
     }
   },
-  // Fetches posts when the component is created.
-  created() {
-    axios.get(`http://localhost:8081/folders/`)
+
+  mounted() {
+    var urlPath = this.$route.path
+    this.urlPath = urlPath
+    var backPath = "http://localhost:8081/folders"+ urlPath
+    axios.get(backPath)
     .then(response => {
       // JSON responses are automatically parsed.
       this.tree = response.data
