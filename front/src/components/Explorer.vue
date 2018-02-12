@@ -1,9 +1,13 @@
 <template>
   <div class="tree">
-    <div class="" v-for="folder in tree.childFoldersArray">
-      <a :href="urlPath+folder.folderName+'/'">{{ folder.folderName }}</a>
-      {{error.message}}
-
+    <div v-if="tree.iAmASpec === true">
+      specs
+    </div>
+    <div v-else>
+      <div class="" v-for="folder in tree.childFoldersArray">
+        <a :href="urlPath+folder.folderName+'/'">{{ folder.folderName }}</a>
+        {{error.message}}
+      </div>
     </div>
   </div>
 </template>
@@ -24,10 +28,10 @@ export default {
   mounted() {
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = "http://localhost:8081/folders"+ urlPath+"/"
+    var backPath = "http://localhost:8081"+ urlPath
+
     axios.get(backPath)
     .then(response => {
-      // JSON responses are automatically parsed.
       this.tree = response.data
     })
     .catch(e => {
