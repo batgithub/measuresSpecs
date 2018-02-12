@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const fs = require('fs')
+const junk = require('junk');
 
 //markdown parser
 var mds = require('markdown-serve')
@@ -20,6 +21,7 @@ var getChildFolders = function(folderPathRoot) {
   var childFolders = fs.readdirSync(folderPathRoot)
   var childFoldersArray = []
   var iAmASpec = false
+
   childFolders.forEach((folder) => {
     var obj    = {};
     var childFolderPath = folderPathRoot + folder
@@ -45,8 +47,25 @@ var getChildFolders = function(folderPathRoot) {
       childFoldersArray.push(obj)
     }
   })
-  return {iAmASpec:iAmASpec, childFoldersArray,}
+
+  fs.readdir(folderPathRoot, (err, files) => {
+    files.filter(junk.not).forEach((folder) => {
+      var childFolderPath = folderPathRoot + folder
+      if(!fs.lstatSync(childFolderPath).isDirectory()){
+        console.log('1');
+      }else{
+        console.log('2');
+      }
+
+    })
+  })
+  return {iAmASpec:iAmASpec, childFoldersArray}
 }
+
+
+
+
+
 
 
 app.get('/e/*', function(req, res) {

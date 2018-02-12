@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>chat/message-user-tiny</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chat" transform="translate(-47.000000, -121.000000)" fill="#5197C9">
+            <path d="M48.322404,125.998504 C48.322404,123.237907 50.5678685,121 53.3132151,121 L54.5610771,121 C57.317426,121 59.5518882,123.231926 59.5518882,125.99579 L59.5518882,126.174558 C59.5518882,128.933656 57.3187687,130.962048 54.5624922,130.796139 C54.5624922,130.796139 55.9146199,130.751293 52.4733184,130.751293 C49.9401828,130.751293 47,133.247777 47,133.247777 L48.322404,126.671354 L48.322404,125.998504 Z" id="chat/message-user-tiny" transform="translate(53.275944, 127.123889) scale(-1, 1) translate(-53.275944, -127.123889) "></path>
+        </g>
+    </g>
+</svg>
