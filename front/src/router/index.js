@@ -10,6 +10,10 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path:'/',
+      redirect:'/e/'
+    },
+    {
       path: '/e/*',
       name: 'Explorer',
       component: Explorer

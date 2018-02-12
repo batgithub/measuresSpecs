@@ -1,7 +1,7 @@
 <template>
   <div class="tree">
     <div class="" v-for="folder in tree.childFoldersArray">
-      <a :href=urlPath+folder.folderName>{{ folder.folderName }}</a>
+      <a :href="urlPath+folder.folderName+'/'">{{ folder.folderName }}</a>
       {{error.message}}
 
     </div>
@@ -24,7 +24,7 @@ export default {
   mounted() {
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = "http://localhost:8081/folders"+ urlPath
+    var backPath = "http://localhost:8081/folders"+ urlPath+"/"
     axios.get(backPath)
     .then(response => {
       // JSON responses are automatically parsed.
