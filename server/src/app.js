@@ -48,24 +48,45 @@ var getChildFolders = function(folderPathRoot) {
     }
   })
 
-  fs.readdir(folderPathRoot, (err, files) => {
-    files.filter(junk.not).forEach((folder) => {
-      var childFolderPath = folderPathRoot + folder
-      if(!fs.lstatSync(childFolderPath).isDirectory()){
-        console.log('1');
-      }else{
-        console.log('2');
-      }
 
-    })
-  })
   return {iAmASpec:iAmASpec, childFoldersArray}
 }
 
-
-
-
-
+// var getChildFolders = function(folderPathRoot) {
+//   fs.readdir(folderPathRoot, function(err, list) {
+//     var childFolders = fs.readdirSync(folderPathRoot)
+//     var childFoldersArray = []
+//     var iAmASpec = false
+//     list.filter(junk.not).forEach((folder) => {
+//       var obj    = {};
+//       var childFolderPath = folderPathRoot + folder
+//       if(!fs.lstatSync(childFolderPath).isDirectory()){
+//         iAmASpec = true
+//       }else{
+//         var subFolders  = fs.readdirSync(folderPathRoot + folder);
+//         var isSpec = function(){
+//           var response = false
+//           fs.readdir(folderPathRoot + folder, function(err, list) {
+//             list.filter(junk.not).forEach((file) => {
+//               var filePath = folderPathRoot + folder +'/' +file
+//               if(!fs.lstatSync(filePath).isDirectory()){
+//                 response = true
+//               }
+//             })
+//           })
+//           return response
+//         }
+//
+//         obj.folderName = folder
+//         obj.folderPath  = folderPathRoot + folder
+//         obj.isSpec = isSpec()
+//
+//         childFoldersArray.push(obj)
+//       } // end else
+//     }) // end forEach
+//     return {iAmASpec:iAmASpec, childFoldersArray}
+//   })// function
+// }
 
 
 app.get('/e/*', function(req, res) {
