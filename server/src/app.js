@@ -16,7 +16,7 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-//return if we are in specs folder, his child folders and if they are specs folders
+// return if we are in specs folder, his child folders and if they are specs folders
 var getChildFolders = function(folderPathRoot) {
   var childFolders = fs.readdirSync(folderPathRoot)
   var childFoldersArray = []
@@ -52,18 +52,16 @@ var getChildFolders = function(folderPathRoot) {
   return {iAmASpec:iAmASpec, childFoldersArray}
 }
 
-// var getChildFolders = function(folderPathRoot) {
+// var getChildFolders = function(folderPathRoot, done) {
+//   var childFoldersArray = []
+//   var iAmASpec = false
 //   fs.readdir(folderPathRoot, function(err, list) {
-//     var childFolders = fs.readdirSync(folderPathRoot)
-//     var childFoldersArray = []
-//     var iAmASpec = false
 //     list.filter(junk.not).forEach((folder) => {
 //       var obj    = {};
 //       var childFolderPath = folderPathRoot + folder
 //       if(!fs.lstatSync(childFolderPath).isDirectory()){
 //         iAmASpec = true
 //       }else{
-//         var subFolders  = fs.readdirSync(folderPathRoot + folder);
 //         var isSpec = function(){
 //           var response = false
 //           fs.readdir(folderPathRoot + folder, function(err, list) {
@@ -76,17 +74,36 @@ var getChildFolders = function(folderPathRoot) {
 //           })
 //           return response
 //         }
-//
 //         obj.folderName = folder
 //         obj.folderPath  = folderPathRoot + folder
 //         obj.isSpec = isSpec()
-//
 //         childFoldersArray.push(obj)
 //       } // end else
 //     }) // end forEach
 //     return {iAmASpec:iAmASpec, childFoldersArray}
 //   })// function
 // }
+
+
+//https://ourcodeworld.com/articles/read/420/how-to-read-recursively-a-directory-in-node-js
+// var getChildFolders = function(folderPathRoot, done) {
+//   var childFoldersArray = []
+//   fs.readdir(folderPathRoot, function(err, list) {
+//
+//     if (err) return done(err);
+//     list.filter(junk.not).forEach((folder) => {
+//       childFoldersArray.push(folder)
+//       console.log(folder);
+//     })
+//   })
+//   return done(null, childFoldersArray);
+// }
+//
+// getChildFolders('../front/static/', function(err, results) {
+// if (err) throw err;
+// console.log(results);
+// });
+
 
 
 app.get('/e/*', function(req, res) {
