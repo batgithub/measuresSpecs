@@ -1,6 +1,6 @@
 <template lang="html">
     <content class="iframe">
-        <iframe src="../static/test1/checkout/index.html" width="100%" height="100%"></iframe>
+        <iframe src="https://nodejs.org/api/fs.html" width="100%" height="100%"></iframe>
     </content>
 </template>
 

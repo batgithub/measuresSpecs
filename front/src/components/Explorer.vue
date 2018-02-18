@@ -1,11 +1,11 @@
 <template>
   <div class="tree">
     <div v-if="tree.iAmASpec === true">
-      specs
+      <measures :src="'../../../static'+urlPath.slice(2)+tree.theFolder+'/index.html'"></measures>
     </div>
     <div v-else>
       <div class="" v-for="folder in tree.childFoldersArray">
-        <a :href="urlPath+folder.folderName+'/'">{{ folder.folderName }}</a>
+          <li><a :href="urlPath+folder.folderName+'/'">{{ folder.folderName }}</a></li>
         {{error.message}}
       </div>
     </div>
@@ -15,8 +15,12 @@
 <script>
 // import FoldersService from '@/services/FoldersService'
 import axios from 'axios';
+import Measures from './Measures';
 
 export default {
+  components: {
+    Measures
+  },
   data () {
     return {
       tree: [],

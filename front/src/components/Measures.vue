@@ -1,17 +1,19 @@
 <template>
     <div class="specs-wrapper">
         <sidebar></sidebar>
-        <specs></specs>
+        <content class="iframe">
+            <iframe :src="src" width="100%" height="100%"></iframe>
+        </content>
     </div>
 </template>
 
 <script>
-import Specs from './measures/specs'
+
 import Sidebar from './measures/Sidebar'
 
 export default {
+  props: ['src'],
   components: {
-    Specs,
     Sidebar
   }
 }
@@ -23,5 +25,9 @@ position: fixed;
 display: flex;
 width: 100%;
 height: 100vh;
+}
+.iframe {
+    height: 100%;
+    width: 100%;
 }
 </style>

@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const fs = require('fs')
-const junk = require('junk');
 
 //markdown parser
 var mds = require('markdown-serve')
@@ -25,16 +24,28 @@ var getChildFolders = function(folderPathRoot) {
   childFolders.forEach((folder) => {
     var obj    = {};
     var childFolderPath = folderPathRoot + folder
+
+
     if(!fs.lstatSync(childFolderPath).isDirectory()){
-      iAmASpec = true
-    }else{
+      if (folder == '.DS_Store') {
+        //do nothing
+      }
+      else {
+        iAmASpec = true
+      }
+    }
+    else{
       var subFolders  = fs.readdirSync(folderPathRoot + folder);
       var isSpec = function(){
         var response = false
         subFolders.forEach((file) => {
           var filePath = folderPathRoot + folder +'/' +file
           if(!fs.lstatSync(filePath).isDirectory()){
-            response = true
+            if (folder == '.DS_Store') {
+              //do nothing
+            } else {
+              response = true
+            }
           }
         })
         return response
@@ -43,67 +54,26 @@ var getChildFolders = function(folderPathRoot) {
       obj.folderName = folder
       obj.folderPath  = folderPathRoot + folder
       obj.isSpec = isSpec()
-
       childFoldersArray.push(obj)
     }
   })
 
+  if (iAmASpec === true) {
+    var theFolder
+    childFolders.forEach((folder) => {
+      var childFolderPath = folderPathRoot + folder
+      if(fs.lstatSync(childFolderPath).isDirectory()){
+        theFolder = folder
+      }else {
 
-  return {iAmASpec:iAmASpec, childFoldersArray}
+      }
+    })
+    return {iAmASpec:iAmASpec, theFolder}
+  }
+  else {
+    return {iAmASpec:iAmASpec, childFoldersArray}
+  }
 }
-
-// var getChildFolders = function(folderPathRoot, done) {
-//   var childFoldersArray = []
-//   var iAmASpec = false
-//   fs.readdir(folderPathRoot, function(err, list) {
-//     list.filter(junk.not).forEach((folder) => {
-//       var obj    = {};
-//       var childFolderPath = folderPathRoot + folder
-//       if(!fs.lstatSync(childFolderPath).isDirectory()){
-//         iAmASpec = true
-//       }else{
-//         var isSpec = function(){
-//           var response = false
-//           fs.readdir(folderPathRoot + folder, function(err, list) {
-//             list.filter(junk.not).forEach((file) => {
-//               var filePath = folderPathRoot + folder +'/' +file
-//               if(!fs.lstatSync(filePath).isDirectory()){
-//                 response = true
-//               }
-//             })
-//           })
-//           return response
-//         }
-//         obj.folderName = folder
-//         obj.folderPath  = folderPathRoot + folder
-//         obj.isSpec = isSpec()
-//         childFoldersArray.push(obj)
-//       } // end else
-//     }) // end forEach
-//     return {iAmASpec:iAmASpec, childFoldersArray}
-//   })// function
-// }
-
-
-//https://ourcodeworld.com/articles/read/420/how-to-read-recursively-a-directory-in-node-js
-// var getChildFolders = function(folderPathRoot, done) {
-//   var childFoldersArray = []
-//   fs.readdir(folderPathRoot, function(err, list) {
-//
-//     if (err) return done(err);
-//     list.filter(junk.not).forEach((folder) => {
-//       childFoldersArray.push(folder)
-//       console.log(folder);
-//     })
-//   })
-//   return done(null, childFoldersArray);
-// }
-//
-// getChildFolders('../front/static/', function(err, results) {
-// if (err) throw err;
-// console.log(results);
-// });
-
 
 
 app.get('/e/*', function(req, res) {
@@ -112,7 +82,6 @@ app.get('/e/*', function(req, res) {
       return req.params[0]+'/'
     }
   }()
-
   const pathFolder = '../front/static/' + req.params[0]
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(getChildFolders(pathFolder)))
