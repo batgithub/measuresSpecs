@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="44px" viewBox="0 0 45 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>folder-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="folder-icon">
+            <g>
+                <g id="folder" stroke="#4A90E2" stroke-width="2">
+                    <rect id="Rectangle-7" fill="#F6F6F6" x="0" y="5" width="45" height="39" rx="1"></rect>
+                    <polygon id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="0.0177830897 5.01401254 0.0177830897 0.0350363324 18.0343911 0.0350363324 22.0337539 5.01401254"></polygon>
+                </g>
+                <g id="icon-measure/outline" transform="translate(6.000000, 9.000000)" fill="#4A90E2">
+                    <g id="icon-measure" transform="translate(1.000000, 7.000000)">
+                        <g id="ico-rule" fill-rule="nonzero">
+                            <path d="M1,1 L1,9 L29,9 L29,1 L1,1 Z M0,0 L30,0 L30,10 L0,10 L0,0 Z" id="Rectangle"></path>
+                            <polygon id="Line-Copy-2" points="8 10 7 10 7 6 8 6"></polygon>
+                            <polygon id="Line-Copy-3" points="12 10 11 10 11 5 12 5"></polygon>
+                            <polygon id="Line-Copy-9" points="5 10 4 10 4 5 5 5"></polygon>
+                            <polygon id="Line-Copy-5" points="15 9 14 9 14 6 15 6"></polygon>
+                            <polygon id="Line-Copy-6" points="19 10 18 10 18 5 19 5"></polygon>
+                            <polygon id="Line-Copy-10" points="26 10 25 10 25 5 26 5"></polygon>
+                            <polygon id="Line-Copy-8" points="23 10 22 10 22 6 23 6"></polygon>
+                        </g>
+                        <g id="icon-size" transform="translate(0.000000, 12.000000)" fill-rule="nonzero">
+                            <polygon id="Line" points="0 2 0 1 30 1 30 2"></polygon>
+                            <polygon id="Line-2" points="0 0 1 0 1 3 0 3"></polygon>
+                            <polygon id="Line-2-Copy" points="29 0 30 0 30 3 29 3"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
