@@ -12,7 +12,7 @@
 
 <script>
 import SidebarHeader from './Sidebar/SidebarHeader'
-import MdService from '@/services/MdService'
+import axios from 'axios';
 
 export default {
   name: 'sidebar',
@@ -21,17 +21,23 @@ export default {
   },
   data () {
     return {
-      md: []
+      md: [],
+      errors: []
     }
   },
-  mounted () {
-    this.getMd('test2/test2')
-  },
-  methods: {
-    async getMd (path) {
-      const response = await MdService.fetchMd(path)
+  mounted() {
+    var urlPath = this.$route.path.slice(2)+"history"
+    this.urlPath = urlPath;
+    console.log(urlPath);
+    var backPath = "http://localhost:8081/markdown"+urlPath
+
+    axios.get(backPath)
+    .then(response => {
       this.md = response.data
-    }
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
 }
 

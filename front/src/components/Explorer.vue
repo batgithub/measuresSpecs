@@ -8,11 +8,11 @@
         <h1>Measures</h1>
         <div class="folders">
           <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'">
-            <div class="folder">
+            <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
             </div>
 
-            {{error.message}}
+            {{errors.message}}
           </a>
 
         </div>
@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       tree: [],
-      error: [],
+      errors: [],
       urlPath:''
     }
   },
@@ -68,6 +68,7 @@ export default {
   flex-wrap:wrap;
 }
 
+
 a.folder-wrapper {
   box-sizing: border-box;
   padding: 1em 1em;
@@ -84,15 +85,18 @@ a.folder-wrapper {
 
 
   .folder {
-
     &::before {
-
       content: url('../assets/folder-icon.svg');
       display: inline-block;
       vertical-align: middle;
       margin-right: .5em;
     }
+  }
 
+  .folder.specs {
+    &::before {
+      content: url('../assets/folder-icon-specs.svg')!important;
+    }
   }
 }
 </style>

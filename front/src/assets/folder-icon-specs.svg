@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="45px" height="44px" viewBox="0 0 45 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>folder-icon</title>
+    <title>folder-icon-specs</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="folder-icon">
-            <g>
-                <g id="folder" stroke="#4A90E2" stroke-width="2">
-                    <rect id="Rectangle-7" fill="#F6F6F6" x="0" y="5" width="45" height="39" rx="1"></rect>
-                    <polygon id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="0.0177830897 5.01401254 0.0177830897 0.0350363324 18.0343911 0.0350363324 22.0337539 5.01401254"></polygon>
+        <g id="folder-icon-specs">
+            <g id="folder-icon-copy">
+                <g id="folder">
+                    <rect id="Rectangle-2" fill="#F6F6F6" x="2" y="1" width="18" height="4"></rect>
+                    <path d="M1.91489362,6.66721731 L1.91489362,42.0854983 L43.0851064,42.0854983 L43.0851064,6.66721731 L1.91489362,6.66721731 Z M0.0890837004,6.08836797 C0.0426455701,5.97588731 0.0170263625,5.85262488 0.0170263625,5.72337999 L0.0170263625,0.957250838 C0.0170263625,0.428575799 0.4456899,0 0.974473171,0 L18.224417,0 C18.5146096,0 18.7891426,0.131586274 18.9708724,0.357783179 L22.5018248,4.75271563 L43.0851064,4.75271563 C44.1426729,4.75271563 45,5.60986723 45,6.66721731 L45,42.0854983 C45,43.1428484 44.1426729,44 43.0851064,44 L1.91489362,44 C0.857327075,44 1.06297949e-16,43.1428484 0,42.0854983 L0,6.66721731 C-4.05669859e-17,6.46545657 0.0312163599,6.27098531 0.0890837004,6.08836797 Z M1.947101,1.94153494 L1.947101,4.75094446 L20.048819,4.75094446 L17.8420802,1.94153494 L1.947101,1.94153494 Z" id="Combined-Shape" fill="#4A90E2" fill-rule="nonzero"></path>
+                    <rect id="Rectangle" fill="#F6F6F6" x="2" y="7" width="41" height="35"></rect>
                 </g>
-                <g id="icon-measure/outline" transform="translate(6.000000, 9.000000)" fill="#4A90E2">
-                    <g id="icon-measure" transform="translate(1.000000, 7.000000)">
-                        <g id="ico-rule" fill-rule="nonzero">
-                            <path d="M1,1 L1,9 L29,9 L29,1 L1,1 Z M0,0 L30,0 L30,10 L0,10 L0,0 Z" id="Rectangle"></path>
-                            <polygon id="Line-Copy-2" points="8 10 7 10 7 6 8 6"></polygon>
-                            <polygon id="Line-Copy-3" points="12 10 11 10 11 5 12 5"></polygon>
-                            <polygon id="Line-Copy-9" points="5 10 4 10 4 5 5 5"></polygon>
-                            <polygon id="Line-Copy-5" points="15 9 14 9 14 6 15 6"></polygon>
-                            <polygon id="Line-Copy-6" points="19 10 18 10 18 5 19 5"></polygon>
-                            <polygon id="Line-Copy-10" points="26 10 25 10 25 5 26 5"></polygon>
-                            <polygon id="Line-Copy-8" points="23 10 22 10 22 6 23 6"></polygon>
-                        </g>
-                        <g id="icon-size" transform="translate(0.000000, 12.000000)" fill-rule="nonzero">
-                            <polygon id="Line" points="0 2 0 1 30 1 30 2"></polygon>
-                            <polygon id="Line-2" points="0 0 1 0 1 3 0 3"></polygon>
-                            <polygon id="Line-2-Copy" points="29 0 30 0 30 3 29 3"></polygon>
-                        </g>
+            </g>
+            <g id="icon-measure/outline" transform="translate(6.000000, 9.000000)" fill="#4A90E2">
+                <g id="icon-measure" transform="translate(1.000000, 7.000000)">
+                    <g id="ico-rule" fill-rule="nonzero">
+                        <path d="M1,1 L1,9 L29,9 L29,1 L1,1 Z M0,0 L30,0 L30,10 L0,10 L0,0 Z" id="Rectangle"></path>
+                        <polygon id="Line-Copy-2" points="8 10 7 10 7 6 8 6"></polygon>
+                        <polygon id="Line-Copy-3" points="12 10 11 10 11 5 12 5"></polygon>
+                        <polygon id="Line-Copy-9" points="5 10 4 10 4 5 5 5"></polygon>
+                        <polygon id="Line-Copy-5" points="15 9 14 9 14 6 15 6"></polygon>
+                        <polygon id="Line-Copy-6" points="19 10 18 10 18 5 19 5"></polygon>
+                        <polygon id="Line-Copy-10" points="26 10 25 10 25 5 26 5"></polygon>
+                        <polygon id="Line-Copy-8" points="23 10 22 10 22 6 23 6"></polygon>
+                    </g>
+                    <g id="icon-size" transform="translate(0.000000, 12.000000)" fill-rule="nonzero">
+                        <polygon id="Line" points="0 2 0 1 30 1 30 2"></polygon>
+                        <polygon id="Line-2" points="0 0 1 0 1 3 0 3"></polygon>
+                        <polygon id="Line-2-Copy" points="29 0 30 0 30 3 29 3"></polygon>
                     </g>
                 </g>
             </g>
