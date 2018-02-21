@@ -28,7 +28,15 @@ export default {
   mounted() {
     var urlPath = this.$route.path.slice(2)+"history"
     this.urlPath = urlPath;
-    console.log(urlPath);
+
+    var test = urlPath.substring(urlPath.lastIndexOf('/')+1)
+    var test2 = urlPath.substring(0, test)
+    console.log(test2);
+    var str = urlPath;
+    var lastIndex = str.lastIndexOf('/');
+    str = str.substring(0, lastIndex);
+
+
     var backPath = "http://localhost:8081/markdown"+urlPath
 
     axios.get(backPath)
