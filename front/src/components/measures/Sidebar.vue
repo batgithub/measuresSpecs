@@ -27,14 +27,17 @@ export default {
   },
   mounted() {
     var urlPath = this.$route.path.slice(2)+"history"
-    this.urlPath = urlPath;
+    this.urlPath = urlPath
 
-    var test = urlPath.substring(urlPath.lastIndexOf('/')+1)
-    var test2 = urlPath.substring(0, test)
-    console.log(test2);
-    var str = urlPath;
-    var lastIndex = str.lastIndexOf('/');
-    str = str.substring(0, lastIndex);
+    var urlBackLink = this.$route.path.slice(2)
+    console.log(urlBackLink);
+    var test = urlBackLink.substring(urlBackLink.lastIndexOf('/')+1)
+
+    //to do Delete the last "/" 
+    var testest = "http://localhost:8081/markdown"
+    var test2 = testest.substring(testest.lastIndexOf('/')+1)
+    console.log(test);
+
 
 
     var backPath = "http://localhost:8081/markdown"+urlPath
