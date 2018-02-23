@@ -1,6 +1,7 @@
 <template lang="html" charset="utf-8">
     <aside class="sidebar">
-        <sidebar-header href="link transmit to child components"></sidebar-header>
+        <sidebar-header :href='backLink' ></sidebar-header>
+
         <div v-html="md.parsedContent">
         </div>
         <div v-html="md.modified">
@@ -22,24 +23,22 @@ export default {
   data () {
     return {
       md: [],
+      backLink: '',
       errors: []
     }
   },
   mounted() {
+
+    //get back link
+    var urlPathSlashFree = this.$route.path.slice(0,-1)
+
+    var urlLastItem = urlPathSlashFree.substring(urlPathSlashFree.lastIndexOf('/')+1)
+
+    var urlPreviousPage= urlPathSlashFree.replace(urlLastItem, "");
+    this.backLink = urlPreviousPage
+
+    // get markdown
     var urlPath = this.$route.path.slice(2)+"history"
-    this.urlPath = urlPath
-
-    var urlBackLink = this.$route.path.slice(2)
-    console.log(urlBackLink);
-    var test = urlBackLink.substring(urlBackLink.lastIndexOf('/')+1)
-
-    //to do Delete the last "/" 
-    var testest = "http://localhost:8081/markdown"
-    var test2 = testest.substring(testest.lastIndexOf('/')+1)
-    console.log(test);
-
-
-
     var backPath = "http://localhost:8081/markdown"+urlPath
 
     axios.get(backPath)

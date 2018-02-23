@@ -13,6 +13,7 @@ export default new Router({
       path:'/',
       redirect:'/e/'
     },
+
     {
       path: '/e/*',
       name: 'Explorer',
