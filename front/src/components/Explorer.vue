@@ -1,13 +1,13 @@
 <template>
   <div class="explorer">
-    <div v-if="tree.iAmASpec === true">
+    <div v-if="isPreview === true">
       <measures :src="'../../../static'+urlPath.slice(2)+tree.theFolder+'/index.html'"></measures>
     </div>
     <div v-else>
       <div class="container">
         <h1>Measures</h1>
         <div class="folders">
-          <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'+'?preview=true'">
+          <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'+'?preview='+folder.isSpec">
               <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
             </div>
@@ -34,6 +34,7 @@ export default {
     return {
       tree: [],
       errors: [],
+      isPreview: '',
       urlPath:''
     }
   },
@@ -41,14 +42,10 @@ export default {
   mounted() {
 
     var queryURL = this.$route.query
-    console.log( queryURL);
-
-    if ( queryURL ) {
-      // return this.$route.query.preview
-      console.log("yes");
-
+    if ( this.$route.query.preview == 'true' ) {
+      this.isPreview = true
     } else {
-      console.log("no");
+      this.isPreview = false
     }
 
 
