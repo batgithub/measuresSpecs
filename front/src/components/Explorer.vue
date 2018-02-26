@@ -1,20 +1,26 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <measures :src="'../../../static'+urlPath.slice(2)+tree.theFolder+'/index.html'"></measures>
+      <measures :src="'../../../static'+urlPath.slice(2)+folderToPreview+tree.theFolder+'/index.html'"></measures>
     </div>
     <div v-else>
       <div class="container">
-        <h1>Measures</h1>
+        <h1><a href="/e/">Measures</a></h1>
         <div class="folders">
-          <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'+'?preview='+folder.isSpec">
+          <div class="folder-wrapper" v-for="folder in tree.childFoldersArray">
+            <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName+'/'">
               <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
-            </div>
-
-            {{errors.message}}
-          </a>
-
+              </div>
+              {{errors.message}}
+            </a>
+            <a class="" v-if="folder.isSpec === false" :href="urlPath+folder.folderName+'/'">
+              <div v-bind:class="{folder, specs:folder.isSpec}">
+                {{ folder.folderName }}
+              </div>
+              {{errors.message}}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -35,6 +41,7 @@ export default {
       tree: [],
       errors: [],
       isPreview: '',
+      folderToPreview: '',
       urlPath:''
     }
   },
@@ -42,8 +49,14 @@ export default {
   mounted() {
 
     var queryURL = this.$route.query
-    if ( this.$route.query.preview == 'true' ) {
+    var folderToPreview = queryURL.preview
+    this.folderToPreview = folderToPreview
+
+    if ( Object.keys(queryURL).length > 0) {
       this.isPreview = true
+    } else if(Object.keys(queryURL).length === 0){
+      this.isPreview = false
+      folderToPreview = ''
     } else {
       this.isPreview = false
     }
@@ -51,7 +64,10 @@ export default {
 
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = "http://localhost:8081"+ urlPath
+    var backPath = "http://localhost:8081"+ urlPath + folderToPreview
+
+
+
 
     axios.get(backPath)
     .then(response => {
@@ -60,7 +76,6 @@ export default {
     .catch(e => {
       this.errors.push(e)
     })
-
   }
 }
 </script>
@@ -79,20 +94,24 @@ export default {
 }
 
 
-a.folder-wrapper {
+.folder-wrapper {
+
   box-sizing: border-box;
   padding: 1em 1em;
   margin: 0.5em;
   width: calc(50% - 1em);
-  color:$gray-500;
-  text-decoration: none;
+
   background: white;
   border: 1px solid $gray-100;
   border-radius: 5px;
   align-items: center;
 
-  font-size: 1.3em;
+  a {
+    font-size: 1.3em;
+    color:$gray-500;
+    text-decoration: none;
 
+  }
 
   .folder {
     &::before {

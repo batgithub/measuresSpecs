@@ -28,17 +28,14 @@ export default {
   },
   mounted() {
 
-    //get back link
-    var urlPathSlashFree = this.$route.path.slice(0,-1)
-
-    var urlLastItem = urlPathSlashFree.substring(urlPathSlashFree.lastIndexOf('/')+1)
-
-    var urlPreviousPage= urlPathSlashFree.replace(urlLastItem, "");
-    this.backLink = urlPreviousPage
+    //backLink
+    this.backLink = this.$route.path
 
     // get markdown
-    var urlPath = this.$route.path.slice(2)+"history"
+    var folderToPreview = this.$route.query.preview
+    var urlPath = this.$route.path.slice(2)+folderToPreview+'history'
     var backPath = "http://localhost:8081/markdown"+urlPath
+
 
     axios.get(backPath)
     .then(response => {
