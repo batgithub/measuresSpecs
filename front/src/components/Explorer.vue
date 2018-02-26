@@ -1,14 +1,14 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <measures :src="'../../../static'+urlPath.slice(2)+folderToPreview+tree.theFolder+'/index.html'"></measures>
+      <measures :src="'../../../static'+urlPath.slice(2)+folderToPreview+'/'+tree.theFolder+'/index.html'"></measures>
     </div>
     <div v-else>
       <div class="container">
         <h1><a href="/e/">Measures</a></h1>
         <div class="folders">
           <div class="folder-wrapper" v-for="folder in tree.childFoldersArray">
-            <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName+'/'">
+            <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName">
               <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
               </div>
@@ -50,10 +50,11 @@ export default {
 
     var queryURL = this.$route.query
     var folderToPreview = queryURL.preview
-    this.folderToPreview = folderToPreview
+
 
     if ( Object.keys(queryURL).length > 0) {
       this.isPreview = true
+      this.folderToPreview = folderToPreview
     } else if(Object.keys(queryURL).length === 0){
       this.isPreview = false
       folderToPreview = ''
@@ -64,7 +65,7 @@ export default {
 
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = "http://localhost:8081"+ urlPath + folderToPreview
+    var backPath = "http://localhost:8081"+ urlPath + folderToPreview +"/"
 
 
 
