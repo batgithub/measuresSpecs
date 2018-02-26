@@ -7,8 +7,8 @@
       <div class="container">
         <h1>Measures</h1>
         <div class="folders">
-          <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'">
-            <div v-bind:class="{folder, specs:folder.isSpec}">
+          <a class="folder-wrapper" v-for="folder in tree.childFoldersArray" :href="urlPath+folder.folderName+'/'+'?preview=true'">
+              <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
             </div>
 
@@ -39,6 +39,19 @@ export default {
   },
 
   mounted() {
+
+    var queryURL = this.$route.query
+    console.log( queryURL);
+
+    if ( queryURL ) {
+      // return this.$route.query.preview
+      console.log("yes");
+
+    } else {
+      console.log("no");
+    }
+
+
     var urlPath = this.$route.path
     this.urlPath = urlPath
     var backPath = "http://localhost:8081"+ urlPath

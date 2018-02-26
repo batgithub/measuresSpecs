@@ -1,7 +1,6 @@
 <template lang="html" charset="utf-8">
     <aside class="sidebar">
         <sidebar-header :href='backLink' ></sidebar-header>
-
         <div v-html="md.parsedContent">
         </div>
         <div v-html="md.modified">
