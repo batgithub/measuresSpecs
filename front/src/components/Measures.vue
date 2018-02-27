@@ -25,9 +25,11 @@ position: fixed;
 display: flex;
 width: 100%;
 height: 100vh;
+
 }
 .iframe {
     height: 100%;
     width: 100%;
+    background: #191919;
 }
 </style>
