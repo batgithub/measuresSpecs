@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <measures :src="'../../../static'+urlPath.slice(2)+folderToPreview+'/'+tree.theFolder+'/index.html'"></measures>
+      <MeasuresView :src="'../../../static'+urlPath.slice(2)+folderToPreview+'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
       <div class="container">
@@ -28,13 +28,12 @@
 </template>
 
 <script>
-// import FoldersService from '@/services/FoldersService'
 import axios from 'axios';
-import Measures from './Measures';
+import MeasuresView from './measures/MeasuresView';
 
 export default {
   components: {
-    Measures
+    MeasuresView
   },
   data () {
     return {
@@ -66,9 +65,6 @@ export default {
     var urlPath = this.$route.path
     this.urlPath = urlPath
     var backPath = "http://localhost:8081"+ urlPath + folderToPreview +"/"
-
-
-
 
     axios.get(backPath)
     .then(response => {

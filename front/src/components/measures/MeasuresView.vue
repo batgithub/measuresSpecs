@@ -9,7 +9,7 @@
 
 <script>
 
-import Sidebar from './measures/Sidebar'
+import Sidebar from './SidebarView'
 
 export default {
   props: ['src'],
