@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Api from '@/services/api'
 import MeasuresView from './measures/MeasuresView';
 
 export default {
@@ -49,6 +49,9 @@ export default {
 
     var queryURL = this.$route.query
     var folderToPreview = queryURL.preview
+    var pathName = this.$route.path.slice(1,-1)
+    var splits = pathName.split("/");
+    console.log(splits);
 
 
     if ( Object.keys(queryURL).length > 0) {
@@ -64,9 +67,9 @@ export default {
 
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = "http://localhost:8081"+ urlPath + folderToPreview +"/"
+    var backPath = urlPath + folderToPreview +"/"
 
-    axios.get(backPath)
+    Api().get(backPath)
     .then(response => {
       this.tree = response.data
     })

@@ -11,8 +11,9 @@
 </template>
 
 <script>
+import Api from '@/services/api'
 import SidebarHeader from './Sidebar/SidebarHeader'
-import axios from 'axios';
+
 
 export default {
   name: 'sidebar',
@@ -37,7 +38,7 @@ export default {
     var backPath = "http://localhost:8081/markdown"+urlPath
 
 
-    axios.get(backPath)
+    Api().get(backPath)
     .then(response => {
       this.md = response.data
     })
