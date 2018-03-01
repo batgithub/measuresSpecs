@@ -5,7 +5,11 @@
     </div>
     <div v-else>
       <div class="container">
-        <h1><a href="/e/">Measures</a></h1>
+        <h1><a href="/e/">Measures</a>{{ pathName }}</h1>
+
+
+
+
         <div class="folders">
           <div class="folder-wrapper" v-for="folder in tree.childFoldersArray">
             <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName">
@@ -41,7 +45,9 @@ export default {
       errors: [],
       isPreview: '',
       folderToPreview: '',
-      urlPath:''
+      urlPath:'',
+      pathName:''
+
     }
   },
 
@@ -49,9 +55,9 @@ export default {
 
     var queryURL = this.$route.query
     var folderToPreview = queryURL.preview
-    var pathName = this.$route.path.slice(1,-1)
-    var splits = pathName.split("/");
-    console.log(splits);
+    var pathName = this.$route.path.slice(3,-1)
+    this.pathName = pathName
+
 
 
     if ( Object.keys(queryURL).length > 0) {
