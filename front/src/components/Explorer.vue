@@ -4,17 +4,19 @@
       <MeasuresView :src="'../../../static'+urlPath.slice(2)+folderToPreview+'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
+      <nav>
+        <a href="/e/" class="link-title">Measures</a>
+        <span class="separator" v-if="pathName !=''">
+          <img src="../assets/separator.svg" alt="">
+        </span>
+        <span class="title">{{ pathName }}</span>
+      </nav>
       <div class="container">
-        <h1><a href="/e/">Measures</a>{{ pathName }}</h1>
-
-
-
-
         <div class="folders">
           <div class="folder-wrapper" v-for="folder in tree.childFoldersArray">
             <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName">
               <div v-bind:class="{folder, specs:folder.isSpec}">
-                {{ folder.folderName }}
+                {{ folder.folderName }}.spec
               </div>
               {{errors.message}}
             </a>
@@ -90,13 +92,36 @@ export default {
 <style lang="scss">
 
 @import './general.scss';
-.container h1{
-  padding: 0em 0.5rem;
+
+
+nav {
+  background: white;
+  padding: 1.5em 2em;
+  font-size: 1.3em;
+  border-bottom: 1px solid $gray-100;
+  .link-title {
+    text-decoration: none;
+    color: $gray-500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .separator {
+    margin: 0 .5em;
+  }
+  .title {
+    font-weight: $font-bold;
+  }
 }
+
+
+
 .folders{
   display: flex;
   justify-content:space-between;
   flex-wrap:wrap;
+  margin-top: 2em;
 }
 
 

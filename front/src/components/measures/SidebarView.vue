@@ -52,7 +52,7 @@ export default {
 
 <style lang="css">
 .sidebar {
-    width: 300px;
+    width: 400px;
     height: 100%;
 }
 </style>
