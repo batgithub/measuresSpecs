@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <nav>
-        <a href="/e/" class="link-title">Measures</a>
+        <a href="/measures/" class="link-title">Measures</a>
         <span class="separator" v-if="pathName !=''">
           <img src="../assets/separator.svg" alt="">
         </span>
@@ -57,7 +57,7 @@ export default {
 
     var queryURL = this.$route.query
     var folderToPreview = queryURL.preview
-    var pathName = this.$route.path.slice(9,-1)
+    var pathName = this.$route.path.slice(10,-1)
     this.pathName = pathName
 
 
@@ -75,7 +75,7 @@ export default {
 
     var urlPath = this.$route.path
     this.urlPath = urlPath
-    var backPath = urlPath + folderToPreview +"/"
+    var backPath = urlPath + folderToPreview 
     console.log(backPath);
 
     Api().get(backPath)
