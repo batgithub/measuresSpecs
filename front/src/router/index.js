@@ -10,11 +10,11 @@ export default new Router({
   routes: [
     {
       path:'/',
-      redirect:'/e/'
+      redirect:'/measures/'
     },
 
     {
-      path: '/e/*',
+      path: '/measures/*',
       name: 'Explorer',
       component: Explorer
     }

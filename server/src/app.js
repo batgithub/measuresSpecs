@@ -76,7 +76,7 @@ var getChildFolders = function(folderPathRoot) {
 }
 
 
-app.get('/e/*', function(req, res) {
+app.get('/measures/*', function(req, res) {
   var checkIfParam = function(){
     if (req.params[0]){
       return req.params[0]+'/'

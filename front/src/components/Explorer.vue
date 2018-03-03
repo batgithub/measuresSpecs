@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <MeasuresView :src="'../../../static'+urlPath.slice(2)+folderToPreview+'/'+tree.theFolder+'/index.html'"></MeasuresView>
+      <MeasuresView :src="'../../../static'+urlPath.slice(9)+folderToPreview+'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
       <nav>
@@ -57,7 +57,7 @@ export default {
 
     var queryURL = this.$route.query
     var folderToPreview = queryURL.preview
-    var pathName = this.$route.path.slice(3,-1)
+    var pathName = this.$route.path.slice(9,-1)
     this.pathName = pathName
 
 
@@ -76,6 +76,7 @@ export default {
     var urlPath = this.$route.path
     this.urlPath = urlPath
     var backPath = urlPath + folderToPreview +"/"
+    console.log(backPath);
 
     Api().get(backPath)
     .then(response => {
