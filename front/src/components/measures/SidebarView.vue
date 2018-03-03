@@ -1,6 +1,6 @@
 <template lang="html" charset="utf-8">
     <aside class="sidebar">
-        <sidebar-header :href='backLink' ></sidebar-header>
+        <sidebar-header :href='backLink' :titleLink='backTitleLink' :title='title'></sidebar-header>
         <div v-html="md.parsedContent">
         </div>
         <div v-html="md.modified">
@@ -24,17 +24,23 @@ export default {
     return {
       md: [],
       backLink: '',
-      errors: []
+      backTitleLink:'',
+      errors: [],
+      title:''
     }
   },
   mounted() {
 
     //backLink
     this.backLink = this.$route.path
-
+    console.log(this.$route.path.split("/"));
     // get markdown
     var folderToPreview = this.$route.query.preview
+    this.title = folderToPreview
+
     var urlPath = this.$route.path.slice(2)+folderToPreview+'/'+'history'
+
+
     var backPath = "http://localhost:8081/markdown"+urlPath
 
 

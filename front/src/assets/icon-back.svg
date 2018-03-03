@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="5px" viewBox="0 0 11 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="measure-link-specs" transform="translate(-18.000000, -33.000000)" fill="#4A90E2" fill-rule="nonzero">
+            <g id="Update-infos" transform="translate(-1.000000, -1.000000)">
+                <g id="title">
+                    <g id="back-link" transform="translate(19.000000, 27.000000)">
+                        <g id="icon-arrow" transform="translate(0.000000, 7.000000)">
+                            <path d="M1.71949981,3 L2.86366913,4.14416933 C3.05893128,4.33943147 3.05893128,4.65601396 2.86366913,4.85127611 C2.66840699,5.04653825 2.3518245,5.04653825 2.15656235,4.85127611 L0.218891342,2.9136051 C0.193363928,2.89621358 0.169089563,2.87619634 0.146446609,2.85355339 C-0.0488155365,2.65829124 -0.0488155365,2.34170876 0.146446609,2.14644661 L2.14644661,0.146446609 C2.34170876,-0.0488155365 2.65829124,-0.0488155365 2.85355339,0.146446609 C3.04881554,0.341708755 3.04881554,0.658291245 2.85355339,0.853553391 L1.70710678,2 L10.5,2 C10.7761424,2 11,2.22385763 11,2.5 C11,2.77614237 10.7761424,3 10.5,3 L1.71949981,3 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

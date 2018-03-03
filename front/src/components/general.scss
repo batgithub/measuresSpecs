@@ -29,6 +29,8 @@ vertical-align: baseline;
 $gray-50: #F7F7F7;
 $gray-100: #DBDBDB;
 $gray-500: #424242;
+$blue-500: #4A90E2;
+$primary-color: $blue-500;
 /*
   Typos
 */
@@ -77,4 +79,12 @@ background: $gray-50;
 .container {
   max-width: 1024px;
   margin: 0 auto;
+}
+
+a {
+  color:$primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
