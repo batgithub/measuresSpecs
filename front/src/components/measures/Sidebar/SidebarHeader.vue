@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="sidebar-header">
-    <a href="href">{{ titleLink }}</a>
+    <a :href="href">{{ titleLink }}</a>
     <span>{{ title }}</span>
   </div>
 </template>
