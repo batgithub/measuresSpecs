@@ -1,10 +1,11 @@
 <template lang="html" charset="utf-8">
     <aside class="sidebar">
         <sidebar-header :href='backLink' :titleLink='backTitleLink' :title='title'></sidebar-header>
-        <div v-html="md.parsedContent">
+        <div class="content">
+          <markdown-content :content='md.parsedContent'></markdown-content>
         </div>
-        <div v-html="md.modified">
-        </div>
+        <sidebar-footer></sidebar-footer>
+
 
 
     </aside>
@@ -13,12 +14,17 @@
 <script>
 import Api from '@/services/api'
 import SidebarHeader from './Sidebar/SidebarHeader'
+import markdownContent from './Sidebar/markdownContent'
+import sidebarFooter from './Sidebar/sidebarFooter'
 
 
 export default {
   name: 'sidebar',
   components: {
-    SidebarHeader
+    SidebarHeader,
+    markdownContent,
+    sidebarFooter
+
   },
   data () {
     return {
@@ -33,23 +39,18 @@ export default {
 
     //backLink
     this.backLink = this.$route.path
-    var backLinkSlice = (this.$route.path.slice(1,-1)).split("/")
 
+    //backLink title
+    var backLinkSlice = (this.$route.path.slice(1,-1)).split("/")
     this.backTitleLink = backLinkSlice[backLinkSlice.length-1]
 
-
-
-
-    // get markdown
+    // Title file previewing
     var folderToPreview = this.$route.query.preview
     this.title = folderToPreview
 
+    // get markdown
     var urlPath = this.$route.path.slice(9)+folderToPreview+'/'+'history'
-
-
     var backPath = "http://localhost:8081/markdown"+urlPath
-
-
     Api().get(backPath)
     .then(response => {
       this.md = response.data
@@ -62,9 +63,13 @@ export default {
 
 </script>
 
-<style lang="css">
+<style lang="scss">
 .sidebar {
     width: 500px;
     height: 100%;
+    background: white;
+    .content {
+      padding: 1em;
+    }
 }
 </style>

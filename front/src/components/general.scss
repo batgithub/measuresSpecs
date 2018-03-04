@@ -30,12 +30,18 @@ $gray-50: #F7F7F7;
 $gray-100: #DBDBDB;
 $gray-500: #424242;
 $blue-500: #4A90E2;
+$blue-600: #0460FF;
 $primary-color: $blue-500;
 /*
   Typos
 */
 $font-bold : 700;
 $font-regular : 400;
+
+/*
+  variables
+*/
+$radius: 5px;
 
 
 html {font-size: 1em;}
@@ -87,4 +93,26 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+
+/*
+  button
+*/
+
+a.button {
+  padding: .8em 1em;
+  border-radius: $radius;
+}
+
+a.button.default {
+  background: $gray-500;
+
+  color: white;
+}
+
+a.button.dropbox {
+  background: $blue-600;
+
+  color: white;
 }

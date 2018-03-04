@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <MeasuresView :src="'../../../static'+urlPath.slice(9)+folderToPreview+'/'+tree.theFolder+'/index.html'"></MeasuresView>
+      <MeasuresView :src="'../../../static/explorerFiles/'+routePath.slice(9)+specsFolder+'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
       <nav>
@@ -14,13 +14,13 @@
       <div class="container">
         <div class="folders">
           <div class="folder-wrapper" v-for="folder in tree.childFoldersArray">
-            <a class="" v-if="folder.isSpec === true" :href="urlPath+'?preview='+folder.folderName">
+            <a class="" v-if="folder.isSpec === true" :href="routePath+'?preview='+folder.folderName">
               <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}.spec
               </div>
               {{errors.message}}
             </a>
-            <a class="" v-if="folder.isSpec === false" :href="urlPath+folder.folderName+'/'">
+            <a class="" v-if="folder.isSpec === false" :href="routePath+folder.folderName+'/'">
               <div v-bind:class="{folder, specs:folder.isSpec}">
                 {{ folder.folderName }}
               </div>
@@ -46,8 +46,8 @@ export default {
       tree: [],
       errors: [],
       isPreview: '',
-      folderToPreview: '',
-      urlPath:'',
+      specsFolder: '',
+      routePath:'',
       pathName:''
 
     }
@@ -56,35 +56,39 @@ export default {
   mounted() {
 
     var queryURL = this.$route.query
-    var folderToPreview = queryURL.preview
+    var specsFolder = queryURL.preview
     var pathName = this.$route.path.slice(10,-1)
     this.pathName = pathName
 
-
-
     if ( Object.keys(queryURL).length > 0) {
       this.isPreview = true
-      this.folderToPreview = folderToPreview
+      this.specsFolder = specsFolder
     } else if(Object.keys(queryURL).length === 0){
       this.isPreview = false
-      folderToPreview = ''
+      specsFolder = ''
     } else {
       this.isPreview = false
     }
 
 
-    var urlPath = this.$route.path
-    this.urlPath = urlPath
-    var backPath = urlPath + folderToPreview 
-    console.log(backPath);
+    var routePath = this.$route.path
+    this.routePath = routePath
 
-    Api().get(backPath)
+    var folderToScan = routePath + specsFolder + '/'
+
+
+
+
+    Api().get(folderToScan)
     .then(response => {
       this.tree = response.data
     })
     .catch(e => {
       this.errors.push(e)
+
     })
+
+
   }
 }
 </script>

@@ -75,6 +75,7 @@ var getChildFolders = function(folderPathRoot) {
   }
 }
 
+var rootFolder = '../front/static/explorerFiles'
 
 app.get('/measures/*', function(req, res) {
   var checkIfParam = function(){
@@ -82,7 +83,7 @@ app.get('/measures/*', function(req, res) {
       return req.params[0]+'/'
     }
   }()
-  const pathFolder = '../front/static/' + req.params[0]
+  const pathFolder = '../front/static/explorerFiles/' + req.params[0]
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(getChildFolders(pathFolder)))
 })
@@ -90,13 +91,9 @@ app.get('/measures/*', function(req, res) {
 
 // Parser MD
 app.use('/markdown', mds.middleware({
-    rootDirectory: path.resolve(__dirname, '../../front/static/'),
+    rootDirectory: path.resolve(__dirname, '../../front/static/explorerFiles/'),
 }))
 
-app.use(mds.middleware({
-    rootDirectory: path.resolve(__dirname, '../../front/static/'),
-    view: 'markdown'
-}))
 
 
 // Server listener
