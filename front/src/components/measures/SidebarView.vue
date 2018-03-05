@@ -1,10 +1,13 @@
 <template lang="html" charset="utf-8">
     <aside class="sidebar">
         <sidebar-header :href='backLink' :titleLink='backTitleLink' :title='title'></sidebar-header>
+
+        <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView'></sidebar-footer>
+
         <div class="content">
           <markdown-content :content='md.parsedContent'></markdown-content>
         </div>
-        <sidebar-footer></sidebar-footer>
+
 
 
 
@@ -29,6 +32,7 @@ export default {
   data () {
     return {
       md: [],
+      mdMeta: [],
       backLink: '',
       backTitleLink:'',
       errors: [],
@@ -51,9 +55,12 @@ export default {
     // get markdown
     var urlPath = this.$route.path.slice(9)+folderToPreview+'/'+'history'
     var backPath = "http://localhost:8081/markdown"+urlPath
+
     Api().get(backPath)
     .then(response => {
       this.md = response.data
+      this.mdMeta = response.data.meta
+
     })
     .catch(e => {
       this.errors.push(e)
@@ -68,8 +75,12 @@ export default {
     width: 500px;
     height: 100%;
     background: white;
+    display: flex;
+    flex-direction: column;
+
     .content {
       padding: 1em;
+      overflow: scroll;
     }
 }
 </style>

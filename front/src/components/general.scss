@@ -107,12 +107,20 @@ a.button {
 
 a.button.default {
   background: $gray-500;
-
   color: white;
+  transition: .3s;
+  &:hover {
+    text-decoration: none;
+    background: lighten($gray-500, 10);
+  }
 }
 
 a.button.dropbox {
   background: $blue-600;
-
   color: white;
+  transition: .3s;
+  &:hover {
+    text-decoration: none;
+    background: lighten($blue-600, 10);
+  }
 }

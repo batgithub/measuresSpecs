@@ -23,7 +23,6 @@ export default {
     align-items: flex-start;
 
     background: white;
-    box-shadow: 0px 2px 1px rgba(black,0.1);
     padding: 1em 1em;
 
     a {

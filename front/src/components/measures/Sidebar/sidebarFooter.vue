@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="wrapper">
-    <a href="#" class="button default">Dowload Assets</a>
-    <a href="#" class="button dropbox">View assets</a>
+    <a :href='linkDownload' class="button default">Dowload Assets</a>
+    <a :href='linkView' class="button dropbox">View assets</a>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['linkDownload','linkView']
 }
 </script>
 
@@ -17,6 +18,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1em;
+  box-shadow: 0px 2px 1px rgba(black,0.1);
+  z-index: 10;
 
   .button {
     text-align: center;

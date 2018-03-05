@@ -18,6 +18,7 @@ export default {
   padding: 1em;
   background: $gray-50;
 
+
   p {margin-bottom: 1.3em;}
 
   h1, h2, h3, h4 {

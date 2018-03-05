@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <MeasuresView :src="'../../../static/explorerFiles/'+routePath.slice(9)+specsFolder+'/'+tree.theFolder+'/index.html'"></MeasuresView>
+      <MeasuresView :src="'../../../static/explorerFiles/'+routePath.slice(10)+specsFolder +'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
       <nav>
@@ -32,7 +32,7 @@
     </div>
   </div>
 </template>
-
+di
 <script>
 import Api from '@/services/api'
 import MeasuresView from './measures/MeasuresView';
@@ -62,7 +62,7 @@ export default {
 
     if ( Object.keys(queryURL).length > 0) {
       this.isPreview = true
-      this.specsFolder = specsFolder
+      this.specsFolder = queryURL.preview
     } else if(Object.keys(queryURL).length === 0){
       this.isPreview = false
       specsFolder = ''
