@@ -22,7 +22,7 @@ var getChildFolders = function(folderPathRoot) {
   var iAmASpec = false
 
   childFolders.forEach((folder) => {
-    var obj    = {};
+    var obj = {};
     var childFolderPath = folderPathRoot + folder
 
 
@@ -34,14 +34,14 @@ var getChildFolders = function(folderPathRoot) {
         iAmASpec = true
       }
     }
-    else{
+    else {
       var subFolders  = fs.readdirSync(folderPathRoot + folder);
       var isSpec = function(){
         var response = false
         subFolders.forEach((file) => {
           var filePath = folderPathRoot + folder +'/' +file
           if(!fs.lstatSync(filePath).isDirectory()){
-            if (folder == '.DS_Store') {
+            if (file == '.DS_Store') {
               //do nothing
             } else {
               response = true
@@ -50,7 +50,6 @@ var getChildFolders = function(folderPathRoot) {
         })
         return response
       }
-
       obj.folderName = folder
       obj.folderPath  = folderPathRoot + folder
       obj.isSpec = isSpec()
