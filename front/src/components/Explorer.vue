@@ -38,6 +38,7 @@ import Api from '@/services/api'
 import MeasuresView from './measures/MeasuresView';
 
 export default {
+  name: 'Explorer',
   components: {
     MeasuresView
   },

@@ -1,6 +1,7 @@
 const express = require('express')
-
+var history = require('connect-history-api-fallback');
 const app = express()
+app.use(history());
 //server static for vue js
 var serveStatic = require('serve-static');
 app.use(serveStatic(__dirname + "../../../front/dist/"));
