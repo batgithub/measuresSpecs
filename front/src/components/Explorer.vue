@@ -4,7 +4,7 @@
       <MeasuresView :src="'../../../static/explorerFiles/'+routePath.slice(10)+specsFolder +'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
-      <nav>
+      <nav class="navigation">
         <a href="/measures/" class="link-title">Measures</a>
         <span class="separator" v-if="pathName !=''">
           <img src="../assets/separator.svg" alt="">
@@ -100,7 +100,7 @@ export default {
 @import './general.scss';
 
 
-nav {
+.navigation {
   background: white;
   padding: 1.5em 2em;
   font-size: 1.3em;
