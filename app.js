@@ -77,7 +77,7 @@ var getChildFolders = function(folderPathRoot) {
   }
 }
 
-var rootFolder = '../front/static/explorerFiles'
+var rootFolder = './front/static/explorerFiles/'
 
 
 
@@ -88,7 +88,7 @@ API.get('/measures/*', function(req, res) {
       return req.params[0]+'/'
     }
   }()
-  const pathFolder = '../front/static/explorerFiles/' + req.params[0]
+  const pathFolder = rootFolder + req.params[0]
   res.setHeader('Content-Type', 'application/json');
 
   res.send(JSON.stringify(getChildFolders(pathFolder)))
@@ -97,7 +97,7 @@ API.get('/measures/*', function(req, res) {
 
 // Parser MD
 API.use('/markdown', mds.middleware({
-    rootDirectory: path.resolve(__dirname, '../../front/static/explorerFiles/'),
+    rootDirectory: path.resolve(__dirname, rootFolder),
 }))
 
 
@@ -118,6 +118,6 @@ var serveStatic = require('serve-static')
 const app = express()
 
 app.use(history());
-app.use(serveStatic(__dirname + "../../../front/dist/"))
+app.use(serveStatic(__dirname + "/front/dist/"))
 app.listen(process.env.PORT || 8080);
 console.log('vuejs on http://localhost:8080 ')
