@@ -119,5 +119,5 @@ const app = express()
 
 app.use(history());
 app.use(serveStatic(__dirname + "/front/dist/"))
-app.listen(process.env.PORT || 8080);
-console.log('vuejs on http://localhost:8080 ')
+app.listen(process.env.PORT || 5000);
+console.log('vuejs on http://localhost:5000 ')
