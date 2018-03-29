@@ -2,7 +2,6 @@
 /front/node_modules/
 */node_modules/
 /node_modules/
-/front/dist/
 /front/yarn-debug.log*
 /front/yarn-error.log*
 
