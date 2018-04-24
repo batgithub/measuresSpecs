@@ -118,7 +118,7 @@ var serveStatic = require('serve-static')
 const app = express()
 
 //Serve specs files
-API.use(serveStatic(__dirname + "/front/static/explorerFiles"))
+API.use(serveStatic(__dirname + "/front/static/explorerFiles/"))
 
 app.use(history());
 app.use(serveStatic(__dirname + "/front/dist/"))
