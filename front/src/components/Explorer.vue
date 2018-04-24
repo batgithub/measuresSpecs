@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <MeasuresView :src="'../../../static/explorerFiles/'+routePath.slice(10)+specsFolder +'/'+tree.theFolder+'/index.html'"></MeasuresView>
+      <MeasuresView :src="'http://localhost:8081/'+routePath.slice(10)+specsFolder +'/'+tree.theFolder+'/index.html'"></MeasuresView>
     </div>
     <div v-else>
       <nav class="navigation">

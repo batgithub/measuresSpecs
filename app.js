@@ -95,11 +95,11 @@ API.get('/measures/*', function(req, res) {
 })
 
 
+
 // Parser MD
 API.use('/markdown', mds.middleware({
     rootDirectory: path.resolve(__dirname, rootFolder),
 }))
-
 
 
 
@@ -116,6 +116,9 @@ console.log("API REST on http://localhost:8081")
 var history = require('connect-history-api-fallback')
 var serveStatic = require('serve-static')
 const app = express()
+
+//Serve specs files
+API.use(serveStatic(__dirname + "/front/static/explorerFiles"))
 
 app.use(history());
 app.use(serveStatic(__dirname + "/front/dist/"))

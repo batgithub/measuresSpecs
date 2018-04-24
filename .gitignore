@@ -4,6 +4,7 @@
 /node_modules/
 /front/yarn-debug.log*
 /front/yarn-error.log*
+/front/dist
 
 # Editor directories and files
 .idea
