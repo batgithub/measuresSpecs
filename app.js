@@ -77,10 +77,8 @@ var getChildFolders = function(folderPathRoot) {
   }
 }
 
+
 var rootFolder = './front/static/explorerFiles/'
-
-
-
 API.get('/measures/*', function(req, res) {
 
   var checkIfParam = function(){
@@ -97,8 +95,9 @@ API.get('/measures/*', function(req, res) {
 
 
 // Parser MD
+var rootFolderMD = './front/static/'
 API.use('/markdown', mds.middleware({
-    rootDirectory: path.resolve(__dirname, rootFolder),
+    rootDirectory: path.resolve(__dirname, rootFolderMD),
 }))
 
 
@@ -123,4 +122,4 @@ API.use(serveStatic(__dirname + "/front/static/explorerFiles/"))
 app.use(history());
 app.use(serveStatic(__dirname + "/front/dist/"))
 app.listen(process.env.PORT || 5000);
-console.log('Build vuejs on http://localhost:5000 ')
+console.log('vuejs on http://localhost:5000 ')

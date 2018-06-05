@@ -1,13 +1,14 @@
-___
+---
 colors:
-    - "primary":
+    - primary:
         - "900, #654ef, white"
         - "800, #a86ef, white"
-    - "secondary":
+    - secondary:
         - "900, #654ef, white"
         - "800, #a86ef, white"
-___
+---
 
 # le title
 
-le texte 
+le texte
+erkgfjherigher igherhgreighiehgierhighreihgierhigh eihgierh ighei hgierhgieh irh g

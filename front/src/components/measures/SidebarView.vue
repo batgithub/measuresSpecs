@@ -53,7 +53,7 @@ export default {
     this.title = folderToPreview
 
     // get markdown
-    var urlPath = this.$route.path.slice(9)+folderToPreview+'/'+'history'
+    var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
     var backPath = "http://localhost:8081/markdown"+urlPath
 
     Api().get(backPath)
