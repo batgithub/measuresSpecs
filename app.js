@@ -123,4 +123,4 @@ API.use(serveStatic(__dirname + "/front/static/explorerFiles/"))
 app.use(history());
 app.use(serveStatic(__dirname + "/front/dist/"))
 app.listen(process.env.PORT || 5000);
-console.log('vuejs on http://localhost:5000 ')
+console.log('Build vuejs on http://localhost:5000 ')

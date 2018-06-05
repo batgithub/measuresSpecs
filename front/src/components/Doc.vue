@@ -1,11 +1,12 @@
 <template lang="html">
-    <div class="">
-        <h1>hello!</h1>
+    <div class="doc">
+        <h1>hello world!</h1>
     </div>
 </template>
 
 <script>
 export default {
+    name: 'Doc',
 }
 </script>
 
