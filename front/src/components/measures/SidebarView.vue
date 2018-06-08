@@ -2,7 +2,7 @@
     <aside class="sidebar">
         <sidebar-header :href='backLink' :titleLink='backTitleLink' :title='title'></sidebar-header>
 
-        <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView'></sidebar-footer>
+        <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView' :dateModif='dateModif'></sidebar-footer>
 
         <div class="content">
           <markdown-content :content='md.parsedContent'></markdown-content>
@@ -36,36 +36,52 @@ export default {
       backLink: '',
       backTitleLink:'',
       errors: [],
-      title:''
+      title:'',
+      dateModif:'',
+      dateModifBrut:''
     }
   },
-  mounted() {
+    mounted() {
 
-    //backLink
-    this.backLink = this.$route.path
+        //backLink
+        this.backLink = this.$route.path
 
-    //backLink title
-    var backLinkSlice = (this.$route.path.slice(1,-1)).split("/")
-    this.backTitleLink = backLinkSlice[backLinkSlice.length-1]
+        //backLink title
+        var backLinkSlice = (this.$route.path.slice(1,-1)).split("/")
+        this.backTitleLink = backLinkSlice[backLinkSlice.length-1]
 
-    // Title file previewing
-    var folderToPreview = this.$route.query.preview
-    this.title = folderToPreview
+        // Title file previewing
+        var folderToPreview = this.$route.query.preview
+        this.title = folderToPreview
 
-    // get markdown
-    var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
-    var backPath = "http://localhost:8081/markdown"+urlPath
+        // get markdown
+        var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
+        var backPath = "http://localhost:8081/markdown"+urlPath
 
-    Api().get(backPath)
-    .then(response => {
-      this.md = response.data
-      this.mdMeta = response.data.meta
+        Api().get(backPath)
+            .then(response => {
+              this.md = response.data
+              this.mdMeta = response.data.meta
+              this.dateModifBrut = response.data.modified
+              this.getFormatedDate( this.dateModifBrut )
+            })
+            .catch(e => {
+              this.errors.push(e)
+            })
 
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  }
+
+
+    },
+    methods: {
+        getFormatedDate: function(date){
+            var dateLessTimeZone = date.split(".")[0]
+            var dateDay = dateLessTimeZone.split("T")[0]
+            var dateTime = dateLessTimeZone.split("T")[1]
+            this.dateModif = 'the '+dateDay+' at '+dateTime
+        }
+
+    }
+
 }
 
 </script>

@@ -3,6 +3,7 @@
         <h1>hello world!</h1>
         <p v-html='md.parsedContent'></p>
         <p>{{ mdMeta.colors }}</p>
+        <p>{{ modifTime }}</p>
     </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
     data() {
         return {
             md: [],
-            mdMeta: []
+            mdMeta: [],
+            modifTime: []
         }
     },
 
@@ -26,6 +28,7 @@ export default {
         .then(response => {
           this.md = response.data
           this.mdMeta = response.data.meta
+          this.modifTime = response.data.modified
 
         })
         .catch(e => {

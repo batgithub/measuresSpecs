@@ -2,12 +2,13 @@
   <div class="wrapper">
     <a :href='linkDownload' class="button default">Dowload Assets</a>
     <a :href='linkView' class="button dropbox">View assets</a>
+    <p>Last modification {{ dateModif }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['linkDownload','linkView']
+  props: ['linkDownload','linkView', 'dateModif']
 }
 </script>
 
