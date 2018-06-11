@@ -1,12 +1,15 @@
 <template lang="html">
-  <div class="mdcontent" v-html='content'>
-  </div>
+    <div class="">
+        <p class="modif">Dernière modification <br/> <b>{{ dateModif }}</b></p>
+        <div class="mdcontent" v-html='content'>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
   props: [
-    'content'
+    'content', 'dateModif'
   ]
 
 }
@@ -14,6 +17,12 @@ export default {
 
 <style lang="scss">
 @import '../../general.scss';
+
+.modif {
+    text-align: center;
+    margin: 1em 0 2em;
+    font-size: .9em;
+}
 .mdcontent {
   padding: 1em;
   background: $gray-50;

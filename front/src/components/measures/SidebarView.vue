@@ -2,10 +2,10 @@
     <aside class="sidebar">
         <sidebar-header :href='backLink' :titleLink='backTitleLink' :title='title'></sidebar-header>
 
-        <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView' :dateModif='dateModif'></sidebar-footer>
+        <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView' ></sidebar-footer>
 
         <div class="content">
-          <markdown-content :content='md.parsedContent'></markdown-content>
+          <markdown-content :content='md.parsedContent' :dateModif='dateModif'></markdown-content>
         </div>
 
 
@@ -58,12 +58,14 @@ export default {
         var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
         var backPath = "http://localhost:8081/markdown"+urlPath
 
+
+
         Api().get(backPath)
             .then(response => {
               this.md = response.data
               this.mdMeta = response.data.meta
               this.dateModifBrut = response.data.modified
-              this.getFormatedDate( this.dateModifBrut )
+              this.dateModif = this.getFormatedDate( this.dateModifBrut )
             })
             .catch(e => {
               this.errors.push(e)
@@ -74,10 +76,10 @@ export default {
     },
     methods: {
         getFormatedDate: function(date){
-            var dateLessTimeZone = date.split(".")[0]
-            var dateDay = dateLessTimeZone.split("T")[0]
-            var dateTime = dateLessTimeZone.split("T")[1]
-            this.dateModif = 'the '+dateDay+' at '+dateTime
+            var moment = require('moment');
+            var formatedDate = moment(date, moment.ISO_8601, 'fr').calendar();
+            return formatedDate
+
         }
 
     }
