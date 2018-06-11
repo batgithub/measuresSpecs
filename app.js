@@ -77,7 +77,7 @@ var getChildFolders = function(folderPathRoot) {
   }
 }
 
-
+//API return json with all child folder and if child is a specs folder on /measures/path-to-file
 var rootFolder = './front/static/explorerFiles/'
 API.get('/measures/*', function(req, res) {
 
@@ -93,33 +93,27 @@ API.get('/measures/*', function(req, res) {
 })
 
 
-
-// Parser MD
+// Return json with Parser MD on route /markdown/path-to-file
 var rootFolderMD = './front/static/'
 API.use('/markdown', mds.middleware({
     rootDirectory: path.resolve(__dirname, rootFolderMD),
 }))
 
-
-
-
-
-// Server listener
+// API Server
 API.listen(process.env.PORT || 8081)
 console.log("API REST on http://localhost:8081")
 
 
 
-
-// Server render app Vue js
+// Production Server render app Vue js from DIST folder
 var history = require('connect-history-api-fallback')
 var serveStatic = require('serve-static')
 const app = express()
 
+app.use(history());
+app.use(serveStatic(__dirname + "/front/dist/"))
 //Serve specs files
 API.use(serveStatic(__dirname + "/front/static/explorerFiles/"))
 
-app.use(history());
-app.use(serveStatic(__dirname + "/front/dist/"))
 app.listen(process.env.PORT || 5000);
 console.log('vuejs on http://localhost:5000 ')

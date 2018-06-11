@@ -22,7 +22,9 @@ export default {
 
     mounted() {
         // get markdown
-        var backPath = "http://localhost:8081/markdown/documentation/colors"
+        var backPath = "/markdown/documentation/colors"
+
+        console.log(backPath);
 
         Api().get(backPath)
         .then(response => {
