@@ -1,7 +1,7 @@
 <template>
   <div class="explorer">
     <div v-if="isPreview === true">
-      <MeasuresView :src="'http://localhost:8081/'+routePath.slice(10)+specsFolder +'/'+tree.theFolder"></MeasuresView>
+      <MeasuresView :src="api_root+routePath.slice(10)+specsFolder +'/'+tree.theFolder"></MeasuresView>
     </div>
     <div v-else>
       <nav class="navigation">
@@ -49,7 +49,8 @@ export default {
       isPreview: '',
       specsFolder: '',
       routePath:'',
-      pathName:''
+      pathName:'',
+      api_root: process.env.ROOT_URL + ':' + process.env.API_PORT+'/'
 
     }
   },
