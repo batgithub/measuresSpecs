@@ -58,20 +58,10 @@ export default {
         var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
         var backPath = process.env.host + ':' + process.env.API_PORT+"/markdown"+urlPath
 
-
-
-        Api().get(backPath)
-            .then(response => {
-              this.md = response.data
-              this.mdMeta = response.data.meta
-              this.dateModifBrut = response.data.modified
-              this.dateModif = this.getFormatedDate( this.dateModifBrut )
-            })
-            .catch(e => {
-              this.errors.push(e)
-            })
-
-
+        this.connexion(backPath)
+        setInterval(() => {
+            this.connexion(backPath)
+        }, 30000);
 
     },
     methods: {
@@ -80,8 +70,20 @@ export default {
             var formatedDate = moment(date, moment.ISO_8601, 'fr').calendar();
             return formatedDate
 
-        }
+        },
 
+        connexion: function(link) {
+            Api().get(link)
+                .then(response => {
+                  this.md = response.data
+                  this.mdMeta = response.data.meta
+                  this.dateModifBrut = response.data.modified
+                  this.dateModif = this.getFormatedDate( this.dateModifBrut )
+                })
+                .catch(e => {
+                  this.errors.push(e)
+                })
+        }
     }
 
 }
