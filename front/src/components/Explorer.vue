@@ -50,13 +50,13 @@ export default {
       specsFolder: '',
       routePath:'',
       pathName:'',
-      api_root: process.env.ROOT_URL + ':' + process.env.API_PORT+'/'
+      api_root: process.env.host + ':' + process.env.API_PORT+'/'
 
     }
   },
 
   mounted() {
-
+      console.log(this.api_root);
     var queryURL = this.$route.query
     var specsFolder = queryURL.preview
     var pathName = this.$route.path.slice(10,-1)
