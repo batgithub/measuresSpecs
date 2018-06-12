@@ -56,7 +56,7 @@ export default {
 
         // get markdown
         var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
-        var backPath = "http://localhost:8081/markdown"+urlPath
+        var backPath = process.env.host + ':' + process.env.API_PORT+"/markdown"+urlPath
 
 
 
