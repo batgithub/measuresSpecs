@@ -56,7 +56,6 @@ export default {
   },
 
   mounted() {
-      console.log(this.api_root);
     var queryURL = this.$route.query
     var specsFolder = queryURL.preview
     var pathName = this.$route.path.slice(10,-1)
@@ -77,8 +76,6 @@ export default {
     this.routePath = routePath
 
     var folderToScan = routePath + specsFolder + '/'
-
-
 
 
     Api().get(folderToScan)
