@@ -56,6 +56,9 @@ export default {
   },
 
   mounted() {
+
+
+
     var queryURL = this.$route.query
     var specsFolder = queryURL.preview
     var pathName = this.$route.path.slice(10,-1)
@@ -71,6 +74,7 @@ export default {
       this.isPreview = false
     }
 
+    document.title = this.pathName + " | Measures"
 
     var routePath = this.$route.path
     this.routePath = routePath
