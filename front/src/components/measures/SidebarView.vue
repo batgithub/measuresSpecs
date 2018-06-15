@@ -5,7 +5,7 @@
         <sidebar-footer :linkDownload='mdMeta.linkDownload' :linkView='mdMeta.linkView' ></sidebar-footer>
 
         <div class="content">
-          <markdown-content :content='md.parsedContent' :dateModif='dateModif'></markdown-content>
+          <markdown-content :content='md.parsedContent' :dateModif='this.getFormatedDate(lastDateModif)'></markdown-content>
         </div>
 
 
@@ -19,6 +19,7 @@ import Api from '@/services/api'
 import SidebarHeader from './Sidebar/SidebarHeader'
 import markdownContent from './Sidebar/markdownContent'
 import sidebarFooter from './Sidebar/sidebarFooter'
+var moment = require('moment');
 
 
 export default {
@@ -37,8 +38,7 @@ export default {
       backTitleLink:'',
       errors: [],
       title:'',
-      dateModif:'',
-      dateModifBrut:''
+      lastDateModif:'',
     }
   },
     mounted() {
@@ -57,33 +57,52 @@ export default {
         // get markdown
         var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
         var backPath = process.env.host + ':' + process.env.API_PORT+"/markdown"+urlPath
+        this.getApiData(backPath)
 
-        this.connexion(backPath)
+        //check every X ms if there is a new version of .md file
         setInterval(() => {
-            this.connexion(backPath)
-        }, 30000);
+            this.getApiData(backPath)
+            console.log("________________________________");
+        }, 5000);
+
+
 
     },
     methods: {
         getFormatedDate: function(date){
-            var moment = require('moment');
+
             var formatedDate = moment(date, moment.ISO_8601, 'fr').calendar();
             return formatedDate
 
         },
+        checkIfIsNew: function(newDate) {
 
-        connexion: function(link) {
+            var isAfter = moment(newDate).isAfter( this.lastDateModif )
+
+            if (isAfter === true) {
+                console.log('launch pop up');
+                this.lastDateModif = newDate
+            }
+
+            else if (isAfter === false) {
+                console.log('do nothing');
+                this.lastDateModif = newDate
+            }
+
+        },
+
+        getApiData: function(link) {
             Api().get(link)
                 .then(response => {
                   this.md = response.data
                   this.mdMeta = response.data.meta
-                  this.dateModifBrut = response.data.modified
-                  this.dateModif = this.getFormatedDate( this.dateModifBrut )
+                  this.checkIfIsNew(response.data.modified)
                 })
                 .catch(e => {
                   this.errors.push(e)
                 })
-        }
+        },
+
     }
 
 }
