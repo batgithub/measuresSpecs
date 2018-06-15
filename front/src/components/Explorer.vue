@@ -74,7 +74,12 @@ export default {
       this.isPreview = false
     }
 
-    document.title = this.pathName + " | Measures"
+    if (pathName || specsFolder) {
+        document.title =  pathName+" "+ specsFolder + " | Measures"
+    }
+    else {
+        document.title = " Measures"
+    }
 
     var routePath = this.$route.path
     this.routePath = routePath
