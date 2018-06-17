@@ -1,19 +1,25 @@
 <template lang="html">
   <div class="wrapper">
-    <a :href='linkDownload' class="button default">Dowload Assets</a>
-    <a :href='linkView' class="button dropbox">View assets</a>
+    <buttons :link='linkDownload' class="button default" label='Dowload Assets'></buttons>
+    <buttons :link='linkView' class="button primary" label='View assets'></buttons>
 
   </div>
 </template>
 
 <script>
+import buttons from '../../general/buttons'
+
 export default {
-  props: ['linkDownload','linkView']
+  props: ['linkDownload','linkView'],
+  components: {
+    buttons
+  }
 }
 </script>
 
 <style lang="scss">
 @import '../../general.scss';
+
 
 .wrapper {
   display: flex;

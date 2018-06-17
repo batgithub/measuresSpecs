@@ -32,6 +32,7 @@ $gray-500: #424242;
 $blue-500: #4A90E2;
 $blue-600: #0460FF;
 $primary-color: $blue-500;
+$primary-variant-color: $blue-600;
 /*
   Typos
 */
@@ -92,35 +93,5 @@ a {
   text-decoration: none;
   &:hover {
     text-decoration: underline;
-  }
-}
-
-
-/*
-  button
-*/
-
-a.button {
-  padding: .8em 1em;
-  border-radius: $radius;
-}
-
-a.button.default {
-  background: $gray-500;
-  color: white;
-  transition: .3s;
-  &:hover {
-    text-decoration: none;
-    background: lighten($gray-500, 10);
-  }
-}
-
-a.button.dropbox {
-  background: $blue-600;
-  color: white;
-  transition: .3s;
-  &:hover {
-    text-decoration: none;
-    background: lighten($blue-600, 10);
   }
 }
