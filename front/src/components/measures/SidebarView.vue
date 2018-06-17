@@ -8,9 +8,6 @@
           <markdown-content :content='md.parsedContent' :dateModif='this.getFormatedDate(lastDateModif)'></markdown-content>
         </div>
 
-
-
-
     </aside>
 </template>
 
@@ -57,16 +54,20 @@ export default {
         // get markdown
         var urlPath = '/explorerFiles/'+this.$route.path.slice(9)+folderToPreview+'/'+'history'
         var backPath = process.env.host + ':' + process.env.API_PORT+"/markdown"+urlPath
+
         this.getApiData(backPath)
 
         //check every X ms if there is a new version of .md file
-        setInterval(() => {
+        var interval = setInterval(() => {
             this.getApiData(backPath)
             console.log("________________________________");
         }, 5000);
 
 
 
+    },
+    destroyed() {
+      clearInterval(this.interval)
     },
     methods: {
         getFormatedDate: function(date){
