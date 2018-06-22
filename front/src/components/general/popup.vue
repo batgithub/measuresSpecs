@@ -1,8 +1,8 @@
 <template lang="html">
     <transition name="fade">
-        <div v-if="showModal" class="popup" :id="idTriger">
+        <div v-if='showModal' class="popup" :id="idTriger">
             <div class="container">
-                <h1 class="title">{{ title }}</h1>
+                <h1 class="title">{{ title }}{{ showModal }}</h1>
                 <span class="subtitle">{{ subtitle }}</span>
                 <div class="content">
                     <div class="content-wrap">
@@ -32,13 +32,23 @@ export default {
     components: {
         buttons
     },
+    props: {
+        title: String,
+        subtitle: String,
+        content: String,
+        idTriger: String,
+        buttonLabel: String,
+        showModal: {
+            type: Boolean,
+            default: false
+        }
+    },
+
     data () {
         return {
-            showModal: false
 
         }
-  },
-  props: ['title','subtitle', 'content', 'idTriger', 'buttonLabel']
+    }
 
 }
 </script>
