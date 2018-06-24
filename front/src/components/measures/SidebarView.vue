@@ -61,7 +61,7 @@ export default {
         var interval = setInterval(() => {
             this.getApiData(backPath)
             console.log("________________________________");
-        }, 5000);
+        }, 50000);
 
 
 
