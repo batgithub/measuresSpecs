@@ -2,19 +2,19 @@
     <transition name="fade">
         <div v-if='showModal' class="popup" :id="idTriger">
             <div class="container">
-                <h1 class="title">{{ title }}{{ showModal }}</h1>
+                <h1 class="title">{{ title }}</h1>
                 <span class="subtitle">{{ subtitle }}</span>
-                <div class="content">
+                <!-- <div class="content">
                     <div class="content-wrap">
                         {{ content }}
                     </div>
-                </div>
+                </div> -->
                 <div class="actions">
                     <buttons
-                        link=''
+                        link='#'
                         :label="buttonLabel"
                         class='button primary'
-                        @click="showModal = false"
+                        @click.native="removeModal"
                         >
                     </buttons>
 
@@ -25,9 +25,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import buttons from './buttons'
+import store from '../../store/store.js'
+import Vuex from 'vuex'
 
 export default {
+    store:store,
     name: 'popup',
     components: {
         buttons
@@ -43,12 +47,15 @@ export default {
             default: false
         }
     },
+    methods: {
+      ...Vuex.mapActions(['changeModalState']),
 
-    data () {
-        return {
+      removeModal: function() {
+        this.changeModalState(false)
+      }
 
-        }
     }
+
 
 }
 </script>
@@ -101,6 +108,7 @@ export default {
         .actions {
             display: flex;
             justify-content: center;
+            margin-top: 4em;
         }
     }
 </style>

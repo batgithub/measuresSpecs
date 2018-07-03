@@ -17,6 +17,8 @@ import SidebarHeader from './Sidebar/SidebarHeader'
 import markdownContent from './Sidebar/markdownContent'
 import sidebarFooter from './Sidebar/sidebarFooter'
 var moment = require('moment');
+import store from '../../store/store.js'
+import Vuex from 'vuex'
 
 
 export default {
@@ -60,8 +62,8 @@ export default {
         //check every X ms if there is a new version of .md file
         var interval = setInterval(() => {
             this.getApiData(backPath)
-            console.log("________________________________");
-        }, 50000);
+            // console.log("________________________________");
+        }, 30000);
 
 
 
@@ -69,7 +71,15 @@ export default {
     destroyed() {
       clearInterval(this.interval)
     },
+
     methods: {
+
+        ...Vuex.mapActions(['changeModalState']),
+
+        showModal: function() {
+          this.changeModalState(true)
+        },
+
         getFormatedDate: function(date){
 
             var formatedDate = moment(date, moment.ISO_8601, 'fr').calendar();
@@ -81,12 +91,14 @@ export default {
             var isAfter = moment(newDate).isAfter( this.lastDateModif )
 
             if (isAfter === true) {
-                console.log('launch pop up');
+                // console.log('launch pop up');
+                this.showModal()
+                clearInterval(this.interval)
                 this.lastDateModif = newDate
             }
 
             else if (isAfter === false) {
-                console.log('do nothing');
+                // console.log('do nothing');
                 this.lastDateModif = newDate
             }
 
