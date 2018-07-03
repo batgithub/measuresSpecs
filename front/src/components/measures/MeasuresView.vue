@@ -5,7 +5,7 @@
             subtitle="Nouvelle version dispo"
             content="oziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hz"
             buttonLabel= "OK, refresh"
-            v-bind:showModal="true"
+            v-bind:showModal="false"
         >
         </popup>
         <sidebar></sidebar>
@@ -17,15 +17,23 @@
 
 <script>
 
+import Vuex from 'vuex'
+import Vue from 'vue'
 import Sidebar from './SidebarView'
 import popup from '../general/popup'
+import store from '../../store/store.js'
 
 export default {
+  store:store,
   props: ['src'],
   components: {
     Sidebar,
     popup
-  }
+},
+mounted(){
+    console.log(store.state.test);
+}
+
 }
 </script>
 
