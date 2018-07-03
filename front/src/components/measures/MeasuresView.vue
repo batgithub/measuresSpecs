@@ -5,7 +5,7 @@
             subtitle="Nouvelle version dispo"
             content="oziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hzoziejfzo efjozeijfozijef eozijfzeo ifjoijz eofijz oefijzofeij zofje zoifj zofijz ofeijzeofijz fojzof zjofijz foeijzf eojzofij zoefijz ziefhziefh izeuhfizehufizhf iuzhifhz ihfuizeuh fizeuhfizhu ifhzifhzifh zfuhz iefuhzifeuh ziufhezi hefizuhef izuhefiz hfiuhz ifuhzifuhziefh zihf ziuhef izhf izhuefiu zhfeizuh fihzif hzifhuizhuf izhf ziuhf izfizhu fihzuefi zhfihz ifuhzeifu hz"
             buttonLabel= "OK, refresh"
-            v-bind:showModal="false"
+            v-bind:showModal='showModal'
         >
         </popup>
         <sidebar></sidebar>
@@ -33,6 +33,7 @@ export default {
   },
   computed: {
     ...Vuex.mapGetters(['showModal'])
+
   }
 }
 </script>
