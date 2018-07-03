@@ -4,14 +4,18 @@
         <p v-html='md.parsedContent'></p>
         <p>{{ mdMeta.colors }}</p>
         <p>{{ modifTime }}</p>
+        <p>{{ dataApi }}</p>
     </div>
 </template>
 
 <script>
 import Api from '@/services/api'
+import store from '../store/store.js'
+import Vuex from 'vuex'
+
 export default {
     name: 'Doc',
-
+    store: store,
     data() {
         return {
             md: [],
@@ -19,24 +23,33 @@ export default {
             modifTime: []
         }
     },
-
+    computed: {
+      ...Vuex.mapGetters(['dataApi'])
+    },
     mounted() {
+
         // get markdown
         var backPath = "/markdown/documentation/colors"
+        this.getDataApi(backPath)
 
-        console.log(backPath);
-
-        Api().get(backPath)
-        .then(response => {
-          this.md = response.data
-          this.mdMeta = response.data.meta
-          this.modifTime = response.data.modified
-
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+        // Api().get(backPath)
+        // .then(response => {
+        //   this.md = response.data
+        //   this.mdMeta = response.data.meta
+        //   this.modifTime = response.data.modified
+        //
+        // })
+        // .catch(e => {
+        //   this.errors.push(e)
+        // })
+    },
+    methods: {
+      ...Vuex.mapActions(['getDataApi']),
+      getDataApi: function(pathToFolder){
+        this.getDataApi(pathToFolder)
+      }
     }
+
 }
 </script>
 
