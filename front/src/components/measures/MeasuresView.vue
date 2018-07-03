@@ -17,11 +17,12 @@
 
 <script>
 
-import Vuex from 'vuex'
 import Vue from 'vue'
 import Sidebar from './SidebarView'
 import popup from '../general/popup'
 import store from '../../store/store.js'
+import Vuex from 'vuex'
+
 
 export default {
   store:store,
@@ -29,11 +30,10 @@ export default {
   components: {
     Sidebar,
     popup
-},
-mounted(){
-    console.log(store.state.test);
-}
-
+  },
+  computed: {
+    ...Vuex.mapGetters(['showModal'])
+  }
 }
 </script>
 
