@@ -11,7 +11,7 @@
                 </div> -->
                 <div class="actions">
                     <buttons
-                        link='#'
+                        link=''
                         :label="buttonLabel"
                         class='button primary'
                         @click.native="removeModal"
