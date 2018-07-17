@@ -1,42 +1,36 @@
 <template lang="html">
     <div class="doc">
         <h1>hello world!</h1>
-        <p v-html='md.parsedContent'></p>
-        <p>{{ mdMeta.colors }}</p>
-        <p>{{ modifTime }}</p>
+        <p v-html=''></p>
+        <p>{{  }}</p>
+        <p>{{ mdMeta }}</p>
     </div>
 </template>
 
 <script>
 import Api from '@/services/api'
+import store from '../store/store.js'
+import Vuex from 'vuex'
 export default {
     name: 'Doc',
+    store:store,
 
-    data() {
-        return {
-            md: [],
-            mdMeta: [],
-            modifTime: []
-        }
+    methods : {
+      ...Vuex.mapActions([
+        'getDocColors'
+      ]),
+      getInfo: function() {
+        this.getDocColors()
+      },
     },
-
     mounted() {
-        // get markdown
-        var backPath = "/markdown/documentation/colors"
+      this.getInfo()
 
-        console.log(backPath);
-
-        Api().get(backPath)
-        .then(response => {
-          this.md = response.data
-          this.mdMeta = response.data.meta
-          this.modifTime = response.data.modified
-
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+    },
+    computed: {
+      ...Vuex.mapGetters(['mdMeta'])
     }
+
 }
 </script>
 
