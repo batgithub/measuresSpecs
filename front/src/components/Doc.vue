@@ -47,9 +47,10 @@ export default {
     .colors {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: wrap;
       .color {
         margin: 1em;
-        
+
       }
 
     }
