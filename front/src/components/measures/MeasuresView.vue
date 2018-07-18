@@ -17,7 +17,7 @@
 
 <script>
 
-import Vue from 'vue'
+
 import Sidebar from './SidebarView'
 import popup from '../general/popup'
 import store from '../../store/store.js'

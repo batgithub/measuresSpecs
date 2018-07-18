@@ -76,10 +76,6 @@ export default {
 
         ...Vuex.mapActions(['changeModalState']),
 
-        showModal: function() {
-          this.changeModalState(true)
-        },
-
         getFormatedDate: function(date){
 
             var formatedDate = moment(date, moment.ISO_8601, 'fr').calendar();
@@ -92,7 +88,7 @@ export default {
 
             if (isAfter === true) {
                 // console.log('launch pop up');
-                this.showModal()
+                this.changeModalState(true)
                 clearInterval(this.interval)
                 this.lastDateModif = newDate
             }

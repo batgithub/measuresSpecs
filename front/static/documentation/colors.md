@@ -1,20 +1,22 @@
 ---
-colors:
-    - palette:
-      - red 900: "#654ef"
-      - red 800 : "#a86ef"
-      - red 600 : "#a86ef"
-      - blue 900 : "#654ef"
-      - blue 800 : "#a86ef"
-      - blue 600 : "#a86ef"
-      - blue 600 : "#a86ef"
-      - raw : white
-    - theme :
-      - main: "raw"
-      - secondary: "blue 600"
+colors :
+  -
+    name : "red 900"
+    code : "white"
+
+  -
+    name : "red 800"
+    code : "black"  
+
+  -
+    name : "red 600"
+    code : "#FF3838"
+
+
+title : " Colors palette "
+
 ---
 
-# le title
 
 le texte
 erkgfjherigher igherhgreighiehgierhighreihgierhigh eihgierh ighei hgierhgieh irh g

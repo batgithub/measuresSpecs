@@ -1,9 +1,19 @@
 <template lang="html">
     <div class="doc">
-        <h1>hello world!</h1>
-        <p v-html=''></p>
-        <p>{{  }}</p>
-        <p>{{ mdMeta }}</p>
+      <div class="container">
+        <h1>Design system Pictarine</h1>
+        <h2>{{  mdMeta.title }}</h2>
+        <div class="colors">
+          <div class="color"  v-for="color in mdMeta.colors">
+            <palette-color
+              :colorName='color.name'
+              :colorCode='color.code'
+              >
+            </palette-color>
+          </div>
+        </div>
+        <p v-html='mdContent'></p>
+      </div>
     </div>
 </template>
 
@@ -11,28 +21,38 @@
 import Api from '@/services/api'
 import store from '../store/store.js'
 import Vuex from 'vuex'
+import paletteColor from './doc/paletteColor'
+
+
 export default {
     name: 'Doc',
     store:store,
-
-    methods : {
-      ...Vuex.mapActions([
-        'getDocColors'
-      ]),
-      getInfo: function() {
-        this.getDocColors()
-      },
-    },
-    mounted() {
-      this.getInfo()
-
+    components: {
+      paletteColor
     },
     computed: {
-      ...Vuex.mapGetters(['mdMeta'])
+      ...Vuex.mapGetters([
+        'mdMeta',
+        'mdContent'
+      ])
     }
 
 }
 </script>
 
-<style lang="css">
+<style lang="scss" >
+@import './general.scss';
+  .doc {
+    background: white;
+    .colors {
+      display: flex;
+      justify-content: flex-start;
+      .color {
+        margin: 1em;
+        
+      }
+
+    }
+  }
+
 </style>
