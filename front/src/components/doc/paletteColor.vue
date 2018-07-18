@@ -1,10 +1,10 @@
 <template lang="html">
-  <div class="color-wrapper" @click="doCopy(colorCode)">
+  <div class="color-wrapper" @click="doCopy(colorCode, id)">
     <span class="color-bg" :style="'background:'+colorCode+';'">
     </span>
     <div class="color-infos">
       <span class="color-name">{{colorName}}</span>
-      <span class="color-code">{{colorCode}}</span>
+      <span class="color-code" :id="id">{{colorCode}}</span>
     </div>
   </div>
 </template>
@@ -12,17 +12,23 @@
 <script>
 import Vue from 'vue'
 import VueClipboard from 'vue-clipboard2'
-
 Vue.use(VueClipboard)
+
 export default {
   name:'paletteColor',
   props: [
-    'colorName','colorCode'
+    'colorName','colorCode', 'id'
   ],
   methods: {
-    doCopy: function (value) {
+    doCopy: function (value, id) {
       this.$copyText(value).then(function (e) {
+        var e = document.getElementById(id)
+        e.innerHTML = "Copied!"
+        setTimeout(function(){
+          e.innerHTML = value
+        },800)
       }, function (e) {
+        console.log("error copy");
       })
     }
   }
@@ -39,6 +45,10 @@ export default {
     border: 1px solid $medium-light;
     border-radius: $radius;
     cursor: pointer;
+
+    &:hover {
+      box-shadow: 4px 4px 0px 0px rgba($secondary, .4);
+    }
 
 
     .color-bg {

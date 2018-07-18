@@ -14,11 +14,13 @@ import store from './store/store.js'
       store:store,
 
       mounted() {
+        this.initApi()
         this.getDocColors()
+        this.getDocTheme()
       },
       methods : {
         ...Vuex.mapActions([
-          'getDocColors',
+          'getDocColors','initApi','getDocTheme'
         ])
       }
 

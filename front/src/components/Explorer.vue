@@ -35,7 +35,7 @@
 di
 <script>
 import Api from '@/services/api'
-import MeasuresView from './measures/MeasuresView'
+import MeasuresView from './explorer/MeasuresView'
 
 export default {
   name: 'Explorer',

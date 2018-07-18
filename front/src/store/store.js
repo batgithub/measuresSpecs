@@ -5,9 +5,11 @@ Vue.use(Vuex)
 
 const state = {
   showModal: false,
-  mdMeta:[],
-  mdContent:"",
-  mdModiftime: [],
+  colorsValues:[],
+  colorsText:"",
+  themeValues:[],
+  themeText:"",
+  colorsModifiedTime: [],
   axiosApi: {}
 }
 
@@ -15,14 +17,14 @@ const mutations = {
     CHANGE_MODAL_STATE: (state, isShown) => {
         state.showModal = isShown
     },
-    SAVE_MD_META: (state, meta) => {
-      state.mdMeta = meta
+    SAVE_COLORS_DATA: (state, meta) => {
+      state.colorsValues = meta.meta
+      state.colorsModifiedTime = meta.modified
+      state.colorsText = meta.parsedContent
     },
-    SAVE_MODIF_TIME: (state, meta) => {
-      state.mdModiftime = meta
-    },
-    SAVE_MD_CONTENT: (state, content) => {
-      state.mdContent = content
+    SAVE_THEME_DATA: (state, meta) => {
+      state.themeValues = meta.meta
+      state.themeText = meta.parsedContent
     },
     INIT_API: (state, axiosObj) => {
       state.axiosApi = axiosObj
@@ -31,8 +33,10 @@ const mutations = {
 
 const getters = {
     showModal: (state) => state.showModal,
-    mdMeta: (state) => state.mdMeta,
-    mdContent: (state) => state.mdContent,
+    colorsValues: (state) => state.colorsValues,
+    colorsText: (state) => state.colorsText,
+    themeValues: (state) => state.themeValues,
+    themeText: (state) => state.themeText,
 }
 
 const actions = {
@@ -45,12 +49,18 @@ const actions = {
     },
 
     getDocColors: (store) => {
-      store.dispatch('initApi')
       state.axiosApi.get("/markdown/documentation/colors")
       .then(response => {
-        store.commit("SAVE_MD_META", response.data.meta )
-        store.commit("SAVE_MODIF_TIME", response.data.modified )
-        store.commit("SAVE_MD_CONTENT", response.data.parsedContent )
+        store.commit("SAVE_COLORS_DATA", response.data)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    getDocTheme: (store) => {
+      state.axiosApi.get("/markdown/documentation/theme")
+      .then(response => {
+        store.commit("SAVE_THEME_DATA", response.data)
 
       })
       .catch(e => {
