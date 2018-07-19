@@ -50,8 +50,6 @@ export default {
     &:hover {
       box-shadow: 4px 4px 0px 0px rgba($secondary, .4);
     }
-
-
     .color-bg {
       display: flex;
       height: 2em;

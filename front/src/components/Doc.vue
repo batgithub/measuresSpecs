@@ -36,18 +36,19 @@
         </section>
         <section>
             <h3>{{  themeFontColorsValues.title }}</h3>
-            <div class="themeColors variables">
-                <theme-color
-                  class="themeColor"
+            <div class="fontColors variables">
+
+                <font-color
+                  class="fontColor"
                   v-for="color, index in themeFontColorsValues.theme"
                   :key="color.id"
                   :color='color.color'
                   :colorReference='color.reference'
                   :id='"color-theme-text"+index'
-                  :colorBG='color.code'
+                  :colorCode='color.code'
                   :onColorCode='color.onColorCode'
                   :onColor='color.onColor'
-                ></theme-color>
+                ></font-color>
             </div>
             <p class="text" v-html='themeFontColorsText'></p>
         </section>
@@ -78,6 +79,7 @@ import store from '../store/store.js'
 import Vuex from 'vuex'
 import paletteColor from './doc/paletteColor'
 import themeColor from './doc/themeColor'
+import fontColor from './doc/fontColor'
 
 
 export default {
@@ -85,7 +87,8 @@ export default {
     store:store,
     components: {
       paletteColor,
-      themeColor
+      themeColor,
+      fontColor
     },
     computed: {
       ...Vuex.mapGetters([
@@ -110,6 +113,9 @@ export default {
     padding: 0 1em;
 
     .variables {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
       margin-bottom: 1.5em;
     }
     h1, h2, h3, h4 {
@@ -121,9 +127,7 @@ export default {
 
 
     .colors, .themeColors {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
+
 
     }
     .colors.variables {
@@ -135,10 +139,10 @@ export default {
 
         }
     }
-
-    .themeColors {
-      .themeColor {
-
+    .fontColors {
+      margin: 0 -1em;
+      .fontColor {
+        margin: 1em;
       }
     }
   }
