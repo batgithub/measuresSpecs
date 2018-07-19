@@ -4,31 +4,34 @@
         <h1>Design system Pictarine</h1>
         <section>
           <h2>{{  colorsValues.title }}</h2>
-          <div class="colors">
-            <div class="color"  v-for="color, index in colorsValues.colors">
+          <div class="colors variables">
               <palette-color
+              class="color"
+              v-for="color, index in colorsValues.colors"
+              :key="color.id"
               :colorName='color.name'
               :colorCode='color.code'
               :id='"color-code-text"+index'
               >
             </palette-color>
-          </div>
         </div>
-        <p v-html='colorsText'></p>
+        <p class="text" v-html='colorsText'></p>
         </section>
         <section>
             <h2>{{  themeValues.title }}</h2>
-            <div class="themeColors">
-              <div class="themeColor"  v-for="color, index in themeValues.theme">
+            <div class="themeColors variables">
                 <theme-color
+                  class="themeColor"
+                  v-for="color, index in themeValues.theme"
+                  :key="color.id"
                   :color='color.color'
                   :colorReference='color.reference'
                   :id='"color-theme-text"+index'
                   :colorBG='color.code'
+                  :onColorCode='color.onColorCode'
                 ></theme-color>
-              </div>
             </div>
-
+            <p class="text" v-html='themeText'></p>
         </section>
       </div>
     </div>
@@ -66,15 +69,32 @@ export default {
   .doc {
     background: white;
     padding: 0 1em;
-    .colors {
+
+    .variables {
+      margin-bottom: 1.5em;
+    }
+
+
+    .colors, .themeColors {
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
-      .color {
-        margin: 1em;
+
+    }
+    .colors.variables {
+      margin: 0 -1em 1.5em;
+    }
+    .colors {
+        .color {
+          margin: 1em;
+
+        }
+    }
+
+    .themeColors {
+      .themeColor {
 
       }
-
     }
   }
 
