@@ -1,67 +1,21 @@
 ---
 theme :
   -
-    color : "main"
-    reference : "raw white"
-    code: "#white"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"
-
-  -
-    color : "secondary"
-    reference : "blue 400"
-    code: "#356AAB"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "secondary darken"
-    reference : "blue 800"
-    code: "#03254E"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "secondary lighten"
-    reference : "blue 50"
-    code: "#DCECFF"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"  
-
-  -
-    color : "tertiary"
-    reference : "red 200"
-    code: "#FF3838"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "dark"
-    reference : "gray 800"
+    color : "Color title"
+    reference : "Dark"
     code: "#1C1C1C"
     onColor: "raw white"
     onColorCode: "white"
   -
-    color : "medium dark"
-    reference : "gray 300"
+    color : "Color content"
+    reference : "medium dark"
     code: "#535353"
     onColor: "raw white"
     onColorCode: "white"
-  -
-    color : "medium light"
-    reference : "gray 200"
-    code: "#A9A9A9"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"
+    
 
-  -
-    color : "light"
-    reference : "gray 100"
-    code: "#EBEBEB"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"
 
-title : " Main Theme colors"
+title : " Theme font colors "
 
 ---
 

@@ -1,67 +1,35 @@
 ---
 theme :
   -
-    color : "main"
-    reference : "raw white"
+    color : "surface"
+    reference : "main"
     code: "#white"
     onColor: "gray 800"
     onColorCode: "#1C1C1C"
 
   -
-    color : "secondary"
-    reference : "blue 400"
-    code: "#356AAB"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "secondary darken"
-    reference : "blue 800"
-    code: "#03254E"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "secondary lighten"
-    reference : "blue 50"
-    code: "#DCECFF"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"  
-
-  -
-    color : "tertiary"
-    reference : "red 200"
-    code: "#FF3838"
-    onColor: "raw white"
-    onColorCode: "white"
-
-  -
-    color : "dark"
-    reference : "gray 800"
-    code: "#1C1C1C"
-    onColor: "raw white"
-    onColorCode: "white"
-  -
-    color : "medium dark"
-    reference : "gray 300"
-    code: "#535353"
-    onColor: "raw white"
-    onColorCode: "white"
-  -
-    color : "medium light"
-    reference : "gray 200"
-    code: "#A9A9A9"
-    onColor: "gray 800"
-    onColorCode: "#1C1C1C"
-
-  -
-    color : "light"
-    reference : "gray 100"
+    color : "background"
+    reference : "light"
     code: "#EBEBEB"
     onColor: "gray 800"
     onColorCode: "#1C1C1C"
 
-title : " Main Theme colors"
+  -
+    color : "error"
+    reference : "red 600"
+    code: "#B33737"
+    onColor: "raw white"
+    onColorCode: "white"
+
+  -
+    color : "warning"
+    reference : "yellow 500"
+    code: "#FFE80F"
+    onColor: "gray 800"
+    onColorCode: "#1C1C1C"
+
+
+title : " Theme elements "
 
 ---
 

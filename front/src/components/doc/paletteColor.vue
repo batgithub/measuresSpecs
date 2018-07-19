@@ -45,6 +45,7 @@ export default {
     border: 1px solid $medium-light;
     border-radius: $radius;
     cursor: pointer;
+    width: 9rem;
 
     &:hover {
       box-shadow: 4px 4px 0px 0px rgba($secondary, .4);

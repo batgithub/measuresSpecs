@@ -1,7 +1,10 @@
 <template lang="html">
   <div class="themeColor-wrapper" :style="'background:'+colorBG+';'">
-    <p class="name" :style="'color:'+onColorCode+';'">{{ color }}</p>
-    <p class="ref" :style="'color:'+onColorCode+';'" >{{  colorReference }}</p>
+    <div class="">
+      <p class="name" :style="'color:'+onColorCode+';'">{{ color }}</p>
+      <p class="ref" :style="'color:'+onColorCode+';'" >{{  colorReference }}</p>
+    </div>
+    <p class="onColor" :style="'color:'+onColorCode+';'" >On color : {{ onColor  }} </p>
   </div>
 </template>
 
@@ -13,7 +16,8 @@ export default {
     'colorReference',
     'id',
     'colorBG',
-    'onColorCode'
+    'onColorCode',
+    'onColor'
   ],
 }
 </script>
@@ -21,9 +25,12 @@ export default {
 <style lang="scss" >
   .themeColor-wrapper {
     box-sizing: border-box;
-    width: 12em;
-    height: 12em;
-    padding: 2em;
+    width: 14em;
+    height: 14em;
+    padding: 1.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     p {
       font-size: 1.2em;
@@ -31,8 +38,13 @@ export default {
     }
     .name {
       font-weight: bold;
+      text-transform: uppercase;
     }
     .ref {
+      opacity: .85;
+    }
+    .onColor {
+      font-size: .9em;
       opacity: .85;
     }
 

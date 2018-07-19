@@ -9,6 +9,10 @@ const state = {
   colorsText:"",
   themeValues:[],
   themeText:"",
+  themeElementsValues:[],
+  themeElementsText:"",
+  themeFontColorsValues:[],
+  themeFontColorsText:"",
   colorsModifiedTime: [],
   axiosApi: {}
 }
@@ -26,6 +30,14 @@ const mutations = {
       state.themeValues = meta.meta
       state.themeText = meta.parsedContent
     },
+    SAVE_THEME_ELEMENTS_DATA: (state, meta) => {
+      state.themeElementsValues = meta.meta
+      state.themeElementsText = meta.parsedContent
+    },
+    SAVE_THEME_FONT_COLORS_DATA: (state, meta) => {
+      state.themeFontColorsValues = meta.meta
+      state.themeFontColorsText = meta.parsedContent
+    },
     INIT_API: (state, axiosObj) => {
       state.axiosApi = axiosObj
     }
@@ -37,6 +49,10 @@ const getters = {
     colorsText: (state) => state.colorsText,
     themeValues: (state) => state.themeValues,
     themeText: (state) => state.themeText,
+    themeElementsValues: (state) => state.themeElementsValues,
+    themeElementsText: (state) => state.themeElementsText,
+    themeFontColorsValues: (state) => state.themeFontColorsValues,
+    themeFontColorsText: (state) => state.themeFontColorsText
 }
 
 const actions = {
@@ -61,6 +77,26 @@ const actions = {
       state.axiosApi.get("/markdown/documentation/theme")
       .then(response => {
         store.commit("SAVE_THEME_DATA", response.data)
+
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    getDocThemeElements: (store) => {
+      state.axiosApi.get("/markdown/documentation/theme_elements")
+      .then(response => {
+        store.commit("SAVE_THEME_ELEMENTS_DATA", response.data)
+
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    getDocThemeFontColors: (store) => {
+      state.axiosApi.get("/markdown/documentation/theme_font_colors")
+      .then(response => {
+        store.commit("SAVE_THEME_FONT_COLORS_DATA", response.data)
 
       })
       .catch(e => {

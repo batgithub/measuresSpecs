@@ -17,10 +17,16 @@ import store from './store/store.js'
         this.initApi()
         this.getDocColors()
         this.getDocTheme()
+        this.getDocThemeElements()
+        this.getDocThemeFontColors()
       },
       methods : {
         ...Vuex.mapActions([
-          'getDocColors','initApi','getDocTheme'
+          'getDocColors',
+          'initApi',
+          'getDocTheme',
+          'getDocThemeElements',
+          'getDocThemeFontColors'
         ])
       }
 
