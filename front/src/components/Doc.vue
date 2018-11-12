@@ -109,8 +109,6 @@ export default {
 <style lang="scss" >
 @import './general.scss';
   .doc {
-    background: white;
-    padding: 0 1em;
 
     .variables {
       display: flex;

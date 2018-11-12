@@ -14,6 +14,7 @@ const state = {
   themeFontColorsValues:[],
   themeFontColorsText:"",
   colorsModifiedTime: [],
+  docEmail: "",
   axiosApi: {}
 }
 
@@ -40,7 +41,11 @@ const mutations = {
     },
     INIT_API: (state, axiosObj) => {
       state.axiosApi = axiosObj
-    }
+    },
+    SAVE_EMAIL_DOC: (state, meta) => {
+      state.docEmail = meta.meta
+      state.docEmail = meta.parsedContent
+    },
 }
 
 const getters = {
@@ -52,7 +57,8 @@ const getters = {
     themeElementsValues: (state) => state.themeElementsValues,
     themeElementsText: (state) => state.themeElementsText,
     themeFontColorsValues: (state) => state.themeFontColorsValues,
-    themeFontColorsText: (state) => state.themeFontColorsText
+    themeFontColorsText: (state) => state.themeFontColorsText,
+    docEmail: (state) => state.docEmail
 }
 
 const actions = {
@@ -97,6 +103,16 @@ const actions = {
       state.axiosApi.get("/markdown/documentation/theme_font_colors")
       .then(response => {
         store.commit("SAVE_THEME_FONT_COLORS_DATA", response.data)
+
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    getdocEmail: (store) => {
+      state.axiosApi.get("/markdown/documentation/email")
+      .then(response => {
+        store.commit("SAVE_EMAIL_DOC", response.data)
 
       })
       .catch(e => {

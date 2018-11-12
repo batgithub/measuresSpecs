@@ -19,6 +19,7 @@ import store from './store/store.js'
         this.getDocTheme()
         this.getDocThemeElements()
         this.getDocThemeFontColors()
+        this.getdocEmail()
       },
       methods : {
         ...Vuex.mapActions([
@@ -26,7 +27,8 @@ import store from './store/store.js'
           'initApi',
           'getDocTheme',
           'getDocThemeElements',
-          'getDocThemeFontColors'
+          'getDocThemeFontColors',
+          'getdocEmail'
         ])
       }
 
