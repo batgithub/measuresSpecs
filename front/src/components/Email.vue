@@ -25,7 +25,7 @@ export default {
 <style lang="scss" >
 @import './general.scss';
 @import './highlighter.scss';
-  .container {
+  .emailing .container {
     padding: 2em;
     background: white;
   }
